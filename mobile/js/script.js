@@ -1070,11 +1070,9 @@ function showDataSearch(rows, markericon){
   for (var i in rows){
     var row = rows[i];
     var id = row.id;
-    console.log(id);
-    console.log(row.latitude);
 
     centerBaru = new google.maps.LatLng({lat: parseFloat(row.latitude), lng:  parseFloat(row.longitude)});
-    console.log(centerBaru);
+  
     //markerposition.setMap(null);
     var marker = new google.maps.Marker({
       position: centerBaru,
