@@ -19,7 +19,7 @@ include('useless/Worship/data_office.php');
 
  ?>
 
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <title>Simple Map</title>
@@ -69,7 +69,7 @@ include('useless/Worship/data_office.php');
 
         setLayerAll();
 
-        var a = <?php echo $datajson; ?>;
+        var a = <?php echo $datajson ?>;
         if (a == null) {
           console.log("DATA NGGAK ADA");
         }
