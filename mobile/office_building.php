@@ -15,7 +15,7 @@ if (isset($_GET['lat']) && isset($_GET['lng'])) {
   $lng = 100.3484996;
 }
 
-include('useless/Worship/data_office.php');
+include('useless/Office/data_office.php');
 
  ?>
 
@@ -69,7 +69,7 @@ include('useless/Worship/data_office.php');
 
         setLayerAll();
 
-        var a = <?php echo $datajson ?>;
+        var a = <?php echo $datajson; ?>;
         if (a == null) {
           console.log("DATA NGGAK ADA");
         }
@@ -87,7 +87,7 @@ include('useless/Worship/data_office.php');
                    position: myLatLng,
                    map: map,
                    title: a[i]['name'],
-                   icon:{ url: ""+server+"/img/musajik.png" }
+                   icon:{ url: ""+server+"/img/kantor.png" }
                   });
 
              }
