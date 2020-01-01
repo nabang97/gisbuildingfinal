@@ -6,7 +6,7 @@ function HouseSearchId(lat,lng,id){
   var url = server+'act/rumah_cari-id.php?id='+id+'';
    console.log(url);
    $.ajax({url: url, data: "", dataType: 'json', success: function(rows){
-     console.log(rows);
+     console.log(rows.length);
        showDataSearch(rows,"home.png");
        setMapOnAll(map);
        DraggerListerner();
@@ -21,7 +21,7 @@ function HouseSearchHolder(lat,lng,nama){
   var url = server+'act/rumah_cari-penghuni.php?nama='+nama+'';
    console.log(url);
    $.ajax({url: url, data: "", dataType: 'json', success: function(rows){
-     console.log(rows);
+     console.log(rows.length);
        showDataSearch(rows,"home.png");
        setMapOnAll(map);
        DraggerListerner();
@@ -36,7 +36,7 @@ function HouseSearchOwner(lat,lng,nama){
   var url = server+'act/rumah_cari-pemilik.php?nama='+nama+'';
    console.log(url);
    $.ajax({url: url, data: "", dataType: 'json', success: function(rows){
-     console.log(rows);
+     console.log(rows.length);
        showDataSearch(rows,"home.png");
        setMapOnAll(map);
        DraggerListerner();
@@ -51,7 +51,7 @@ function HouseSearchFcnHolder(lat,lng,kk){
   var url = server+'act/rumah_cari-kkpenghuni.php?kk='+kk+'';
    console.log(url);
    $.ajax({url: url, data: "", dataType: 'json', success: function(rows){
-     console.log(rows);
+     console.log(rows.length);
        showDataSearch(rows,"home.png");
        setMapOnAll(map);
        DraggerListerner();
@@ -81,7 +81,7 @@ function HouseSearchNinOwner(lat,lng,nik){
   var url = server+'act/rumah_cari-nikpemilik.php?nik='+nik+'';
    console.log(url);
    $.ajax({url: url, data: "", dataType: 'json', success: function(rows){
-     console.log(rows);
+     console.log(rows.length);
        showDataSearch(rows,"home.png");
        setMapOnAll(map);
        DraggerListerner();
@@ -96,7 +96,7 @@ function HouseSearchTribe(lat,lng,tribe){
   var url = server+'act/rumah_cari-suku.php?suku='+tribe+'';
    console.log(url);
    $.ajax({url: url, data: "", dataType: 'json', success: function(rows){
-     console.log(rows);
+     console.log(rows.length);
        showDataSearch(rows,"home.png");
        setMapOnAll(map);
        DraggerListerner();
@@ -112,7 +112,7 @@ function HouseSearchCons(lat,lng,cons){
   var url = server+'act/rumah_cari-jeniskonstruksi.php?k='+cons+'';
    console.log(url);
    $.ajax({url: url, data: "", dataType: 'json', success: function(rows){
-     console.log(rows);
+     console.log(rows.length);
        showDataSearch(rows,"home.png");
        setMapOnAll(map);
        DraggerListerner();
@@ -127,7 +127,7 @@ function HouseSearchYear(lat,lng,start,end){
   var url = server+'act/rumah_cari-tahun.php?awal='+start+'&akhir='+end+'';
    console.log(url);
    $.ajax({url: url, data: "", dataType: 'json', success: function(rows){
-     console.log(rows);
+     console.log(rows.length);
        showDataSearch(rows,"home.png");
        setMapOnAll(map);
        DraggerListerner();
@@ -142,7 +142,7 @@ function HouseSearchElectric(lat,lng,start,end){
   var url = server+'act/rumah_cari-listrik.php?awal='+start+'&akhir='+end+'';
    console.log(url);
    $.ajax({url: url, data: "", dataType: 'json', success: function(rows){
-     console.log(rows);
+     console.log(rows.length);
        showDataSearch(rows,"home.png");
        setMapOnAll(map);
        DraggerListerner();
@@ -157,7 +157,7 @@ function HouseSearchEmpty(lat,lng){
   var url = server+'act/rumah_kosong.php';
    console.log(url);
    $.ajax({url: url, data: "", dataType: 'json', success: function(rows){
-     console.log(rows);
+     console.log(rows.length);
        showDataSearch(rows,"home.png");
        setMapOnAll(map);
        DraggerListerner();
@@ -172,7 +172,7 @@ function HouseSearchInhabited(lat,lng){
   var url = server+'act/rumah_berpenghuni.php';
    console.log(url);
    $.ajax({url: url, data: "", dataType: 'json', success: function(rows){
-     console.log(rows);
+     console.log(rows.length);
        showDataSearch(rows,"home.png");
        setMapOnAll(map);
        DraggerListerner();
