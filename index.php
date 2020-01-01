@@ -6,11 +6,11 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>srtdash - ICO Dashboard</title>
-    
+
     <?php include('inc/head.php') ?>
 
     <script src="//maps.google.com/maps/api/js?key=AIzaSyBNnzxae2AewMUN0Tt_fC3gN38goeLVdVE"></script>
-    
+
     <script type="text/javascript" src="script.js"></script>
     <script type="text/javascript" src="script_rumah.js"></script>
     <script type="text/javascript" src="script_umkm.js"></script>
@@ -153,7 +153,7 @@
                 .tulisan {
                     text-shadow: #ff0000 0 0 10px;
                     color: white;
-                    font-weight : bold; 
+                    font-weight : bold;
                 }
                 .form-transparan {
                     background: rgba(0, 0, 0, 0.59);
@@ -257,7 +257,7 @@
                     </div>
                 </div>
                 <!-- SAMPAI DISINI -->
-                
+
             </div>
         </div>
 
@@ -429,7 +429,7 @@
                 $("#tombol-login").show();
             </script>
         ';
-    } 
+    }
 ?>
 </html>
 <div class="modal fade bd-example-modal-lg modal-xl" id="info-bang">
@@ -517,7 +517,7 @@
         });
     }
 
-    
+
         $( document ).ajaxStart( function() {
             $( "#ajax-wait2" ).fadeIn();
                 $( "#ajax-wait2" ).css({

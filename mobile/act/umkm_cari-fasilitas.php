@@ -1,0 +1,36 @@
+<?php
+require '../mobile/koneksi.php';
+
+$fas=$_GET['fas'];
+$fas = explode(",", $fas);
+$f = "";
+$total = count($fas);
+for($i=0;$i<$total;$i++){
+	if($i == $total-1){
+		$f .= "'".$fas[$i]."'";
+	}else{
+		$f .= "'".$fas[$i]."',";
+	}
+}
+$querysearch="	SELECT M.msme_building_id, M.name_of_msme_building, ST_X(ST_Centroid(M.geom)) AS lng, ST_Y(ST_CENTROID(M.geom)) AS lat
+				FROM msme_building AS M
+				JOIN detail_msme_building_facilities AS F ON M.msme_building_id=F.msme_building_id
+				WHERE F.facility_id IN ($f) GROUP BY F.msme_building_id, M.msme_building_id, M.name_of_msme_building
+				HAVING COUNT(*) = '$total'";
+$hasil=pg_query($querysearch);
+while($row = pg_fetch_array($hasil))
+	{
+		$id=$row['msme_building_id'];
+		$name=$row['name_of_msme_building'];
+		$longitude=$row['lng'];
+		$latitude=$row['lat'];
+
+		$dataarray[]=array(
+							'id'=>$id,
+							'name'=>$name,
+							'longitude'=>$longitude,
+							'latitude'=>$latitude
+						);
+	}
+echo json_encode ($dataarray);
+?>
