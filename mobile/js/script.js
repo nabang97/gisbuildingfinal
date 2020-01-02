@@ -180,7 +180,7 @@ function DraggerListernerForRoute(){
     console.log( markerposition.getPosition().lat()+" | "+markerposition.getPosition().lng());
     var currentlocation = {lat: markerposition.getPosition().lat() ,lng: markerposition.getPosition().lng()};
     directionsDisplay.setMap(null);
-    callRouteNavigation(currentlocation, centerLokasi,""+server+"/img/"+photo+"");
+    callRoute(currentlocation, centerLokasi,'lightblue',""+server+"/img/"+photo+"");
     infowindow.setContent("Current Position");
     var latnow = markerposition.getPosition().lat().toString();
     var lngnow = markerposition.getPosition().lng().toString();
