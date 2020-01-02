@@ -345,6 +345,7 @@ function MyDragMarker(dragDiv,map){
     markerposition.setMap(null);
     setMarkerPosition(-0.323489,100.349190, 'Drag Me!');
     map.setCenter(new google.maps.LatLng(-0.323489,100.349190));
+    B4A.CallSub('DragMarkerForRoute', true);
     DraggerListerner();
   });
 }
@@ -1072,7 +1073,7 @@ function showDataSearch(rows, markericon){
     var id = row.id;
 
     centerBaru = new google.maps.LatLng({lat: parseFloat(row.latitude), lng:  parseFloat(row.longitude)});
-  
+
     //markerposition.setMap(null);
     var marker = new google.maps.Marker({
       position: centerBaru,
