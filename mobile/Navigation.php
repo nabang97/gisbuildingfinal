@@ -60,7 +60,7 @@
 
     function initMap() {
       //loadMap(latposition,lngposition);
-      var photo;
+      
       switch (building) {
         case "house":
             photo = "home.png";

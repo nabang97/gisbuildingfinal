@@ -21,6 +21,7 @@ var myStyle = [ { "featureType": "administrative", "elementType": "geometry", "s
 var map;
 var nagariborder, batasnagari, houselayer, msmelayer, educationlayer, officelayer,worshiplayer, healthlayer;
 var directionsDisplay;
+var photo;
 var circles = [];
 
 function geocodePosition(pos,infoWindow) {
