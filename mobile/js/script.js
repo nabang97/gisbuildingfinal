@@ -178,12 +178,12 @@ function DraggerListernerForRoute(){
     updateMarkerStatus('Drag ended');
     geocodePosition(markerposition.getPosition(),infowindow);
     console.log( markerposition.getPosition().lat()+" | "+markerposition.getPosition().lng());
-    var latnow = markerposition.getPosition().lat().toString();
-    var lngnow = markerposition.getPosition().lng().toString();
-    var currentlocation = {lat: latnow, lng: lngnow};
+    var currentlocation = {lat: markerposition.getPosition().lat() ,lng: markerposition.getPosition().lng()};
     directionsDisplay.setMap(null);
     callRouteNavigation(currentlocation, centerLokasi,""+server+"/img/"+photo+"");
     infowindow.setContent("Current Position");
+    var latnow = markerposition.getPosition().lat().toString();
+    var lngnow = markerposition.getPosition().lng().toString();
     console.log(latnow+"|"+lngnow);
     B4A.CallSub('Marker_DragEnd', true, latnow, lngnow);
   });
