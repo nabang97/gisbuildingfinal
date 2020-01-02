@@ -183,7 +183,7 @@ function DraggerListernerForRoute(){
     var lngnow = markerposition.getPosition().lng().toString();
     var currentlocation = {lat: latnow, lng: lngnow};
     directionsDisplay.setMap(null);
-    callRoute(markerposition.getPosition(), centerLokasi,'lightblue',markerku);
+    callRouteNavigation(currentlocation, centerLokasi,""+server+"/img/"+photo+"");
     infowindow.setContent("Current Position");
     console.log(latnow+"|"+lngnow);
     B4A.CallSub('Marker_DragEnd', true, latnow, lngnow);
