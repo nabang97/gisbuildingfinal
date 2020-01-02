@@ -170,9 +170,7 @@ function DraggerListernerForRoute(){
   google.maps.event.addListener(markerposition, 'drag', function() {
     updateMarkerStatus('Dragging...');
     updateMarkerPosition(markerposition.getPosition());
-    if (infowindow) {
-      infoWindow.close();
-    }
+    infowindow.setContent('Dragging...');
     infowindow.open(map,markerposition);
   });
 
