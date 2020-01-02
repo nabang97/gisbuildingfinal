@@ -20,6 +20,7 @@
     <script type="text/javascript" src="script_kesehatan.js"></script>
     <script type="text/javascript">
         tunggu=true;
+        setStartTime();
     </script>
 </head>
 <style type="text/css">
@@ -532,5 +533,4 @@
             $( "#ajax-wait2" ).fadeOut();
             tunggu=false;
         }
-
 </script>

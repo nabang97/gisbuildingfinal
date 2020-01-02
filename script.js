@@ -7,7 +7,8 @@ var nibadah = 0; var digitibadah = [];
 var nkantor = 0; var digitkantor = [];
 var npendidikan = 0; var digitpendidikan = [];
 var nkesehatan = 0; var digitkesehatan = [];
-
+var startTime;
+var responseTime;
 var map;
 var server="";
 
@@ -32,6 +33,11 @@ function loadpeta() {
        mapTypeId: 'satellite'
      });
      map.mapTypes.set('mystyle', new google.maps.StyledMapType(myStyle, { name: 'Styled Map' }));
+
+}
+
+function setStartTime(){
+  startTime = Date.now();
 }
 
 function digitasirumah() {
