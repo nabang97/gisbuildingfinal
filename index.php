@@ -6,11 +6,11 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>srtdash - ICO Dashboard</title>
-
+    
     <?php include('inc/head.php') ?>
 
     <script src="//maps.google.com/maps/api/js?key=AIzaSyBNnzxae2AewMUN0Tt_fC3gN38goeLVdVE"></script>
-
+    
     <script type="text/javascript" src="script.js"></script>
     <script type="text/javascript" src="script_rumah.js"></script>
     <script type="text/javascript" src="script_umkm.js"></script>
@@ -20,7 +20,6 @@
     <script type="text/javascript" src="script_kesehatan.js"></script>
     <script type="text/javascript">
         tunggu=true;
-        setStartTime();
     </script>
 </head>
 <style type="text/css">
@@ -53,31 +52,31 @@
     border-color: red;
   }
   .gantiang {
-    background: lightgreen;
+    background: #C2DBC0;
   }
   .koto {
-    background: #fffc84;
+    background: #F6F6C3;
   }
   .sutijo {
-    background: lightblue;
+    background: #D0DEF5;
   }
   .rumah {
-    background: #CC8F8F;
+    background: #CE9077;
   }
   .ibadah {
-    background: green;
+    background: #7BBB62;
   }
   .kantor {
-    background: blue;
+    background: #7B7BA7;
   }
   .umkm {
-    background: purple;
+    background: #B66C9C;
   }
   .pendidikan {
     background: gray;
   }
   .kesehatan {
-    background: red;
+    background: #FB7B62;
   }
 </style>
 <body>
@@ -129,6 +128,7 @@
                         <div class="col-md-8 col-sm-4 clearfix">
                             <ul class="notification-area pull-right" style="padding-right: 32%">
                                 <li id="tombol-login"><button class="btn btn-outline btn-primary" data-toggle="modal" data-target="#login"><i class="fas fa-sign-in-alt"></i> Login</button></li>
+                                <li name="akses-admin"><button class="btn btn-outline btn-primary" onclick="search()"><i class="fab fa-searchengin"></i> Search Request</button></li>
                                 <li name="akses-admin"><button class="btn btn-outline btn-primary" onclick="keloladata()"><i class="ti-settings"></i> Manage Data</button></li>
                                 <li name="akses-admin" class="user-name dropdown-toggle" data-toggle="dropdown">
                                     <i class="ti-settings"></i>
@@ -154,7 +154,7 @@
                 .tulisan {
                     text-shadow: #ff0000 0 0 10px;
                     color: white;
-                    font-weight : bold;
+                    font-weight : bold; 
                 }
                 .form-transparan {
                     background: rgba(0, 0, 0, 0.59);
@@ -212,9 +212,9 @@
 
             <!-- page title area end -->
             <div class="main-content-inner">
-                <input type="hidden" name="" id="jr" style="width: 50px">
-                <input type="hidden" name="" id="lat" style="width: 5px">
-                <input type="hidden" name="" id="lng" style="width: 5px">
+                <input type="hidden" name="" id="jr">
+                <input type="hidden" name="" id="lat">
+                <input type="hidden" name="" id="lng">
                 <!-- sales report area start -->
                 <br />
                 <button class="btn btn-default" title="current position" onclick="aktifkanGeolocation()"><i class="fas fa-map-marker-alt"></i></button>
@@ -258,7 +258,7 @@
                     </div>
                 </div>
                 <!-- SAMPAI DISINI -->
-
+                
             </div>
         </div>
 
@@ -266,7 +266,7 @@
         <!-- footer area start-->
         <footer>
             <div class="footer-area">
-                <p>© Copyright 2018. All right reserved. Template by <a href="https://colorlib.com/wp/">Colorlib</a>.</p>
+                <p>© Ridho Darman | Jurusan Sistem Informasi Universitas Andalas - Copyright 2018. All right reserved. Template by Colorlib. </p>
             </div>
         </footer>
         <!-- footer area end-->
@@ -430,7 +430,7 @@
                 $("#tombol-login").show();
             </script>
         ';
-    }
+    } 
 ?>
 </html>
 <div class="modal fade bd-example-modal-lg modal-xl" id="info-bang">
@@ -518,7 +518,7 @@
         });
     }
 
-
+    
         $( document ).ajaxStart( function() {
             $( "#ajax-wait2" ).fadeIn();
                 $( "#ajax-wait2" ).css({
@@ -533,4 +533,8 @@
             $( "#ajax-wait2" ).fadeOut();
             tunggu=false;
         }
+
+    function search() {
+        window.location.href="pencarian.php";
+    }
 </script>

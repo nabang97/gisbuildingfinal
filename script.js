@@ -1,5 +1,4 @@
 var batasnagari; var warnanagari = "red"; var ketebalan = 3.0;
-var markers=[];
 var njorong = 0; var digitjorong = [];
 var nrumah = 0; var digitrumah = [];
 var numkm = 0; var digitumkm = [];
@@ -7,8 +6,6 @@ var nibadah = 0; var digitibadah = [];
 var nkantor = 0; var digitkantor = [];
 var npendidikan = 0; var digitpendidikan = [];
 var nkesehatan = 0; var digitkesehatan = [];
-var startTime;
-var responseTime;
 var map;
 var server="";
 
@@ -33,11 +30,6 @@ function loadpeta() {
        mapTypeId: 'satellite'
      });
      map.mapTypes.set('mystyle', new google.maps.StyledMapType(myStyle, { name: 'Styled Map' }));
-
-}
-
-function setStartTime(){
-  startTime = Date.now();
 }
 
 function digitasirumah() {
@@ -324,10 +316,10 @@ function digitasipendidikan() {
 
         digitpendidikan[npendidikan] = new google.maps.Polygon({
           paths: hitungTitik,
-          strokeColor: 'black',
+          strokeColor: 'darkgray',
           strokeOpacity: 1,
           strokeWeight: 0.5,
-          fillColor: 'black',
+          fillColor: '#4a5059',
           fillOpacity: 0.7,
           zIndex: 2,
           content: p3
@@ -522,7 +514,7 @@ function layerjorong() {
         });
         n = n + 1;
       }
-
+    
     cek();
   } else {
     var n = 0;
@@ -672,14 +664,14 @@ function ceklis() {
   var x = document.getElementsByName("layerpeta");
   if (document.getElementById("semua").checked == 1) {
     var i;
-    for (i = 0; i < x.length; i++) {
-      document.getElementsByName("layerpeta")[i].checked = 1;
+    for (i = 0; i < x.length; i++) {    
+      document.getElementsByName("layerpeta")[i].checked = 1; 
     }
   }
   else {
     var i;
-    for (i = 0; i < x.length; i++) {
-      document.getElementsByName("layerpeta")[i].checked = 0;
+    for (i = 0; i < x.length; i++) {    
+      document.getElementsByName("layerpeta")[i].checked = 0; 
     }
   }
   layernagari();
@@ -697,14 +689,14 @@ function cek() {
   x = document.getElementsByName("layerpeta");
   var stats=true;
   var i;
-  for (i = 0; i < x.length; i++) {
+  for (i = 0; i < x.length; i++) {    
     if (document.getElementsByName("layerpeta")[i].checked == 0) {
       stats=false;
     }
   }
   if (stats==true) {
     document.getElementById("semua").checked = 1;
-  }
+  } 
 }
 
 function semuadigitasi() {
@@ -720,8 +712,8 @@ function semuadigitasi() {
   document.getElementById("semua").checked = 1;
   var x = document.getElementsByName("layerpeta");
   var i;
-  for (i = 0; i < x.length; i++) {
-    document.getElementsByName("layerpeta")[i].checked = 1;
+  for (i = 0; i < x.length; i++) {    
+    document.getElementsByName("layerpeta")[i].checked = 1; 
   }
 }
 
@@ -761,7 +753,7 @@ function legenda() {
     map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(legend);
     $('#legend').show();
     tampillegenda = true;
-  }
+  } 
   else {
     $('#legend').show();
   }
@@ -789,12 +781,15 @@ function aktifkanGeolocation() { //posisi saat ini
     pos = {
       lat: position.coords.latitude,
       lng: position.coords.longitude
-
     };
     marker = new google.maps.Marker({
       position: pos,
       map: map,
+      draggable: true,
       animation: google.maps.Animation.BOUNCE,
+    });
+    marker.addListener('drag', function(e){
+      handleEvent(e);
     });
     centerLokasi = new google.maps.LatLng(pos.lat, pos.lng);
     markers.push(marker);
@@ -839,6 +834,7 @@ function addMarker(location) {
   marker = new google.maps.Marker({
     position: location,
     map: map,
+    draggable: true,
     animation: google.maps.Animation.DROP,
   });
   pos = {
@@ -850,12 +846,26 @@ function addMarker(location) {
   infowindow = new google.maps.InfoWindow();
   infowindow.setContent('Current Position');
   infowindow.open(map, marker);
+  marker.addListener('drag', function(e){
+    handleEvent(e);
+  });
   usegeolocation = true;
   google.maps.event.clearListeners(map, 'click');
   clearroute2();
   document.getElementById("lat").value = pos.lat;
   document.getElementById("lng").value = pos.lng;
 }
+
+function handleEvent(event) {
+  //alert("pindah")
+  document.getElementById("lat").value = event.latLng.lat();
+  document.getElementById("lng").value = event.latLng.lng();
+  pos = {
+    lat: event.latLng.lat(),
+    lng: event.latLng.lng()
+  }
+}
+
 
 function hapusposisi() {
   for (var i = 0; i < markers.length; i++) {
@@ -877,7 +887,7 @@ function hapusRadius() {
 function callRoute(start, end, nama) {
   if (pos == 'null' || typeof (pos) == "undefined") {
     $('#atur-posisi').modal('show');
-  }
+  } 
   else {
     clearroute2();
     directionsService = new google.maps.DirectionsService;
@@ -969,11 +979,12 @@ function refresh() {
   hapusRadius();
   sembunyikancari();
   initMap();
+  tampillegenda =false;
   $('#legenda').empty();
   $('#legenda').append('<button class="btn btn-default" title="show legend" onclick="legenda()"><i class="fa fa-globe"></i></button>');
 }
 
-function carimodel() {
+function carimodel() { 
   hapusInfo();
   hapusRadius();
   clearroute2();
@@ -982,36 +993,42 @@ function carimodel() {
   $('#found').empty();
   var model = document.getElementById("model").value;
   console.log("cari model bangunan: " + model);
-  $.ajax({
-    url: 'act/ibadah_cari-model.php?model=' + model,
-    data: "",
-    dataType: 'json',
-    success: function (rows) {
-      model_ibadah(rows);
-      var ibadah = rows.length;
-    },
-    error: function (xhr, ajaxOptions, thrownError) {
-      $('#gagal').modal('show');
-      $('#notifikasi').empty();$('#notifikasi').append(xhr.status);
-      $('#notifikasi').append(thrownError);
-    }
-  });
+  tampilkanhasilcari();
+  if (document.getElementById("model_ibadah").checked == 1) {
+    $.ajax({
+      url: 'act/ibadah_cari-model.php?model=' + model,
+      data: "",
+      dataType: 'json',
+      success: function (rows) {
+        model_ibadah(rows);
+        var ibadah = rows.length;
+      },
+      error: function (xhr, ajaxOptions, thrownError) {
+        $('#gagal').modal('show');
+        $('#notifikasi').empty();$('#notifikasi').append(xhr.status);
+        $('#notifikasi').append(thrownError);
+      }
+    });
+  }
 
-  $.ajax({
-    url: 'act/rumah_cari-model.php?model=' + model,
-    data: "",
-    dataType: 'json',
-    success: function (rows) {
-      model_rumah(rows);
-      var rumah = rows.length;
-    },
-    error: function (xhr, ajaxOptions, thrownError) {
-      $('#gagal').modal('show');
-      $('#notifikasi').empty();$('#notifikasi').append(xhr.status);
-      $('#notifikasi').append(thrownError);
-    }
-  });
+  if (document.getElementById("model_rumah").checked == 1) {
+    $.ajax({
+      url: 'act/rumah_cari-model.php?model=' + model,
+      data: "",
+      dataType: 'json',
+      success: function (rows) {
+        model_rumah(rows);
+        var rumah = rows.length;
+      },
+      error: function (xhr, ajaxOptions, thrownError) {
+        $('#gagal').modal('show');
+        $('#notifikasi').empty();$('#notifikasi').append(xhr.status);
+        $('#notifikasi').append(thrownError);
+      }
+    });
+  }
 
+  if (document.getElementById("model_kantor").checked == 1) {
     $.ajax({
     url: 'act/kantor_cari-model.php?model=' + model,
     data: "",
@@ -1023,37 +1040,43 @@ function carimodel() {
       $('#gagal').modal('show');
       $('#notifikasi').empty();$('#notifikasi').append(xhr.status);
       $('#notifikasi').append(thrownError);
-    }
-  });
+      }
+    });
+  }
 
-  $.ajax({
-    url: 'act/pendidikan_cari-model.php?model=' + model,
-    data: "",
-    dataType: 'json',
-    success: function (rows) {
-      model_pendidikan(rows);
-    },
-    error: function (xhr, ajaxOptions, thrownError) {
-      $('#gagal').modal('show');
-      $('#notifikasi').empty();$('#notifikasi').append(xhr.status);
-      $('#notifikasi').append(thrownError);
-    }
-  });
+  if (document.getElementById("model_pendk").checked == 1) {
+    $.ajax({
+      url: 'act/pendidikan_cari-model.php?model=' + model,
+      data: "",
+      dataType: 'json',
+      success: function (rows) {
+        model_pendidikan(rows);
+      },
+      error: function (xhr, ajaxOptions, thrownError) {
+        $('#gagal').modal('show');
+        $('#notifikasi').empty();$('#notifikasi').append(xhr.status);
+        $('#notifikasi').append(thrownError);
+      }
+    });
+  }
 
-  $.ajax({
-    url: 'act/kesehatan_cari-model.php?model=' + model,
-    data: "",
-    dataType: 'json',
-    success: function (rows) {
-      model_kesehatan(rows);
-    },
-    error: function (xhr, ajaxOptions, thrownError) {
-      $('#gagal').modal('show');
-      $('#notifikasi').empty();$('#notifikasi').append(xhr.status);
-      $('#notifikasi').append(thrownError);
-    }
-  });
+  if (document.getElementById("model_kes").checked == 1) {
+    $.ajax({
+      url: 'act/kesehatan_cari-model.php?model=' + model,
+      data: "",
+      dataType: 'json',
+      success: function (rows) {
+        model_kesehatan(rows);
+      },
+      error: function (xhr, ajaxOptions, thrownError) {
+        $('#gagal').modal('show');
+        $('#notifikasi').empty();$('#notifikasi').append(xhr.status);
+        $('#notifikasi').append(thrownError);
+      }
+    });
+  }
 
+  if (document.getElementById("model_umkm").checked == 1) {
   $.ajax({
     url: 'act/umkm_cari-model.php?model=' + model,
     data: "",
@@ -1067,6 +1090,7 @@ function carimodel() {
       $('#notifikasi').append(thrownError);
     }
   });
+}
 }
 
 function model_ibadah(rows) {
@@ -1090,12 +1114,15 @@ function model_ibadah(rows) {
     tampilkanhasilcari();
     $('#hasilcari').append("<tr><td>" + name + "</td><td style='text-align: center'><button class='btn btn-theme04 btn-xs' onclick='detailibadah_infow(\"" + id + "\");' title='tampilkan info'><i class='fa fa-search-plus'></i></button></td></tr>");
   }
+  if (rows==null) {
+    $('#hasilcari').append("<tr><td colspan='2'>No worship building data</td></tr>");
+  }
 }
 
 function model_rumah(rows)
-{
-  for (var i in rows)
-    {
+{   
+  for (var i in rows) 
+    {   
       var row     = rows[i];
       var id   = row.id;
       var latitude  = row.latitude ;
@@ -1111,10 +1138,13 @@ function model_rumah(rows)
           markersDua.push(marker);
           map.setCenter(centerBaru);
           klikInfoWindow(id);
-          map.setZoom(14);
+          map.setZoom(14);            
           tampilkanhasilcari();
           $('#hasilcari').append("<tr><td><i class='ti-home'></i> "+id+"</td><td style='text-align: center'><button class='btn btn-theme04 btn-xs' onclick='detailrumah_infow(\""+id+"\");' title='tampilkan info'><i class='fa fa-search-plus'></i></button></td></tr>");
     }
+  if (rows==null) {
+    $('#hasilcari').append("<tr><td colspan='2'>No house data</td></tr>");
+  }
 }
 
 function model_kantor(rows) {
@@ -1137,6 +1167,9 @@ function model_kantor(rows) {
     map.setZoom(15);
     tampilkanhasilcari();
     $('#hasilcari').append("<tr><td>" + name + "</td><td style='text-align: center'><button class='btn btn-theme04 btn-xs' onclick='detailkantor_infow(\"" + id + "\");' title='tampilkan info'><i class='fa fa-search-plus'></i></button></td></tr>");
+  }
+  if (rows==null) {
+    $('#hasilcari').append("<tr><td colspan='2'>No office building data</td></tr>");
   }
 }
 
@@ -1161,6 +1194,9 @@ function model_pendidikan(rows) {
     tampilkanhasilcari();
     $('#hasilcari').append("<tr><td>" + name + "</td><td style='text-align: center'><button class='btn btn-theme04 btn-xs' onclick='detailpendidikan_infow(\"" + id + "\");' title='tampilkan info'><i class='fa fa-search-plus'></i></button></td></tr>");
   }
+  if (rows==null) {
+    $('#hasilcari').append("<tr><td colspan='2'>No educational building data</td></tr>");
+  }
 }
 
 function model_kesehatan(rows) {
@@ -1184,6 +1220,9 @@ function model_kesehatan(rows) {
     tampilkanhasilcari();
     $('#hasilcari').append("<tr><td>" + name + "</td><td style='text-align: center'><button class='btn btn-theme04 btn-xs' onclick='detailkesehatan_infow(\"" + id + "\");' title='tampilkan info'><i class='fa fa-search-plus'></i></button></td></tr>");
   }
+  if (rows==null) {
+    $('#hasilcari').append("<tr><td colspan='2'>No health building data</td></tr>");
+  }
 }
 
 function model_umkm(rows) {
@@ -1206,5 +1245,8 @@ function model_umkm(rows) {
     map.setZoom(14);
     tampilkanhasilcari();
     $('#hasilcari').append("<tr><td>" + name + "</td><td style='text-align: center'><button class='btn btn-theme04 btn-xs' onclick='detailumkm_infow(\"" + id + "\");' title='tampilkan info'><i class='fa fa-search-plus'></i></button></td></tr>");
+  }
+  if (rows==null) {
+    $('#hasilcari').append("<tr><td colspan='2'>No MSME building data</td></tr>");
   }
 }
