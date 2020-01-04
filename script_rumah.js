@@ -190,6 +190,9 @@ function aktifkanRadius() { //fungsi radius rumah
             } 
             }    
           });
+      responseTime=Date.now() - startTime;
+      console.log("ResponseTime: "+responseTime);
+      $('#waktu').append("Response Time: "+responseTime+" ms");
 }
 
 function cekRadius()

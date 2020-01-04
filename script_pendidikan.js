@@ -331,6 +331,9 @@ function tampilkanradiuspendidikan() { //menampilkan bang pendidikan berdasarkan
       else {
         $('#hasilcari').append('<td colspan="2">no result</td>');
       }
+      responseTime=Date.now() - startTime;
+      console.log("ResponseTime: "+responseTime);
+      $('#waktu').append("Response Time: "+responseTime+" ms");
     }
   });
 }
@@ -389,6 +392,9 @@ function carifasilitas_pendidikan(){
           $('#found').append("Found: " + a)
           $('#hidecari').show();
       }
+      responseTime=Date.now() - startTime;
+      console.log("ResponseTime: "+responseTime);
+      $('#waktu').append("Response Time: "+responseTime+" ms");
     },
     error: function (xhr, ajaxOptions, thrownError) {
       $('#gagal').modal('show');
