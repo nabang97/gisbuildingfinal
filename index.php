@@ -530,7 +530,7 @@
     }
 
     function load_popup(){
-        setStartTime();
+        $('#waktu-detail').empty();
         $( document ).ajaxStart( function() {
             $( "#ajax-wait" ).css({
             left: ( $( window ).width() - 32 ) / 2 + "px", // 32 = lebar gambar

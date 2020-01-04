@@ -1,4 +1,5 @@
 function tampilsemuakantor() {
+  setStartTime();
   $.ajax({
     url: 'act/kantor_cari.php',
     data: "",
@@ -52,9 +53,13 @@ function cari_kantor(rows) {
     $('#found').append("Found: " + a)
     $('#hidecari').show();
   }
+  responseTime=Date.now() - startTime;
+  console.log("ResponseTime: "+responseTime);
+  $('#waktu').append("Response Time: "+responseTime+" ms");
 }
 
 function carinamakantor() { 
+  setStartTime();
   var namakantor = document.getElementById("namakantor").value;
   $.ajax({
     url: 'act/kantor_cari-nama.php?cari_nama=' + namakantor,
@@ -72,6 +77,7 @@ function carinamakantor() {
 }
 
 function carijenis_kantor() { 
+  setStartTime();
   var jenis = document.getElementById("jeniskantor").value;
   console.log("cari kantor dengan jenis: " + jenis);
   $.ajax({
@@ -90,6 +96,7 @@ function carijenis_kantor() {
 }
 
 function carikons_kantor() { 
+  setStartTime();
   var jenis_k = document.getElementById("jeniskons_kantor").value;
   console.log("cari kantor dengan jenis konstruksi: " + jenis_k);
   $.ajax({
@@ -109,6 +116,7 @@ function carikons_kantor() {
 
 
 function caritahun_kantor() { 
+  setStartTime();
   var awal = document.getElementById("kantor_awaltahun").value;
   var akhir = document.getElementById("kantor_akhirtahun").value;
   console.log("cari kantor dengan tahun berdiri: " + awal + " - " +akhir);
@@ -128,6 +136,7 @@ function caritahun_kantor() {
 }
 
 function carijorong_kantor() { 
+  setStartTime();
   var jorong = document.getElementById("jorong_kantor").value;
   console.log("cari b kantor dengan jorong: " + jorong);
   $.ajax({
@@ -241,6 +250,7 @@ function cekRadiuskantor() {
 }
 
 function tampilkanradiuskantor() { //menampilkan bang kantor berdasarkan radius
+  setStartTime();
   $('#hasilcari1').show();
   $('#hasilcari').empty();
   $('#found').empty();
@@ -284,12 +294,15 @@ function tampilkanradiuskantor() { //menampilkan bang kantor berdasarkan radius
       else {
         $('#hasilcari').append('<td colspan="2">no result</td>');
       }
+      responseTime=Date.now() - startTime;
+      console.log("ResponseTime: "+responseTime);
+      $('#waktu').append("Response Time: "+responseTime+" ms");
     }
   });
 }
 
 function carifasilitas_kantor(){
-
+  setStartTime();
   $('#hasilcari1').show();
   $('#hasilcari').empty();
   hapusInfo();
@@ -342,6 +355,9 @@ function carifasilitas_kantor(){
           $('#found').append("Found: " + a)
           $('#hidecari').show();
       }
+      responseTime=Date.now() - startTime;
+      console.log("ResponseTime: "+responseTime);
+      $('#waktu').append("Response Time: "+responseTime+" ms");
     },
     error: function (xhr, ajaxOptions, thrownError) {
       $('#gagal').modal('show');

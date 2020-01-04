@@ -12,8 +12,6 @@ var server="";
 function setStartTime(){
   startTime = Date.now();
   $('#waktu').empty();
-  $('#waktu-rute').empty();
-  $('#waktu-detail').empty();
 }
 
 var myStyle = [ { "featureType": "administrative", "elementType": "geometry", "stylers": [ { "visibility": "off" } ] }, { "featureType": "landscape.man_made", "elementType": "geometry.fill", "stylers": [ { "visibility": "simplified" } ] }, { "featureType": "landscape.man_made", "elementType": "geometry.stroke", "stylers": [ { "color": "#eeeeee" }, { "visibility": "on" } ] }, { "featureType": "poi", "stylers": [ { "visibility": "off" } ] }, { "featureType": "road", "elementType": "labels.icon", "stylers": [ { "visibility": "off" } ] }, { "featureType": "road.local", "elementType": "geometry.fill", "stylers": [ { "visibility": "off" } ] }, { "featureType": "road.local", "elementType": "geometry.stroke", "stylers": [ { "weight": 1 } ] }, { "featureType": "transit", "stylers": [ { "visibility": "off" } ] } ];
@@ -891,7 +889,6 @@ function hapusRadius() {
 
 
 function callRoute(start, end, nama) {
-  setStartTime();
   if (pos == 'null' || typeof (pos) == "undefined") {
     $('#atur-posisi').modal('show');
   } 
@@ -967,6 +964,7 @@ function rutetampil() {
   $("#infoev").hide();
   $("#infoo").show();
   $("#rute").show();
+  $('#waktu-rute').empty();
 }
 
 
