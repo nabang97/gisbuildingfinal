@@ -1,4 +1,5 @@
 function tampilsemuakesehatan() {
+  setStartTime();
   $.ajax({
     url: 'act/kesehatan_cari.php',
     data: "",
@@ -52,9 +53,13 @@ function cari_kesehatan(rows) {
     $('#found').append("Found: " + a)
     $('#hidecari').show();
   }
+  responseTime=Date.now() - startTime;
+  console.log("ResponseTime: "+responseTime);
+  $('#waktu').append("Response Time: "+responseTime+" ms");
 }
 
 function carinamakesehatan() { 
+  setStartTime();
   var namakesehatan = document.getElementById("namakesehatan").value;
   $.ajax({
     url: 'act/kesehatan_cari-nama.php?cari_nama=' + namakesehatan,
@@ -72,6 +77,7 @@ function carinamakesehatan() {
 }
 
 function carijenis_kesehatan() { 
+  setStartTime();
   var jenis = document.getElementById("jeniskesehatan").value;
   console.log("cari kesehatan dengan jenis: " + jenis);
   $.ajax({
@@ -90,6 +96,7 @@ function carijenis_kesehatan() {
 }
 
 function carijorong_kesehatan() { 
+  setStartTime();
   var jorong = document.getElementById("jorong_kesehatan").value;
   console.log("cari b kesehatan dengan jorong: " + jorong);
   $.ajax({
@@ -203,6 +210,7 @@ function cekRadiuskesehatan() {
 }
 
 function tampilkanradiuskesehatan() { //menampilkan bang kesehatan berdasarkan radius
+  setStartTime();
   $('#hasilcari1').show();
   $('#hasilcari').empty();
   $('#found').empty();
@@ -251,7 +259,7 @@ function tampilkanradiuskesehatan() { //menampilkan bang kesehatan berdasarkan r
 }
 
 function carifasilitas_kesehatan(){
-
+  setStartTime();
   $('#hasilcari1').show();
   $('#hasilcari').empty();
   hapusInfo();

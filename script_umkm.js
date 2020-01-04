@@ -1,4 +1,5 @@
 function tampilsemuaumkm() { //menampilkan semua umkm
+  setStartTime();
   $.ajax({
     url: 'act/umkm_cari.php',
     data: "",
@@ -52,9 +53,13 @@ function cari_umkm(rows) {
     $('#found').append("Found: " + a)
     $('#hidecari').show();
   }
+  responseTime=Date.now() - startTime;
+  console.log("ResponseTime: "+responseTime);
+  $('#waktu').append("Response Time: "+responseTime+" ms");
 }
 
 function carinamaumkm() { //menampilkan umkm berdasarkan nama
+  setStartTime();
   var namaumkm = document.getElementById("namaumkm").value;
   console.log("memanggil fungsi pencarian umkm berdasarkan nama: " + namaumkm);
   $.ajax({
@@ -73,6 +78,7 @@ function carinamaumkm() { //menampilkan umkm berdasarkan nama
 }
 
 function carijenis_umkm() { 
+  setStartTime();
   var jenis = document.getElementById("jenisumkm").value;
   console.log("cari umkm dengan jenis: " + jenis);
   $.ajax({
@@ -91,6 +97,7 @@ function carijenis_umkm() {
 }
 
 function carikons_umkm() { 
+  setStartTime();
   var jenis_k = document.getElementById("jeniskons_umkm").value;
   console.log("cari umkm dengan jenis konstruksi: " + jenis_k);
   $.ajax({
@@ -109,6 +116,7 @@ function carikons_umkm() {
 }
 
 function carijorong_umkm() { 
+  setStartTime();
   var jorong = document.getElementById("jorong_umkm").value;
   console.log("cari umkm dengan jorong: " + jorong);
   $.ajax({
@@ -222,6 +230,7 @@ function cekRadiusumkm() {
 }
 
 function tampilkanradiusumkm() { //menampilkan umkm berdasarkan radius
+  setStartTime();
   $('#hasilcari1').show();
   $('#hasilcari').empty();
   $('#found').empty();
@@ -269,7 +278,7 @@ function tampilkanradiusumkm() { //menampilkan umkm berdasarkan radius
 }
 
 function carifasilitas_umkm(){
-
+  setStartTime();
   $('#hasilcari1').show();
   $('#hasilcari').empty();
   hapusInfo();
@@ -332,6 +341,7 @@ function carifasilitas_umkm(){
 }
 
 function cari_pendumkm() { 
+  setStartTime();
   var awal = document.getElementById("penghasilan-umkm1").value;
   var akhir = document.getElementById("penghasilan-umkm2").value;
   console.log("cari pendapatan umkm dari: " + awal + " - " +akhir);

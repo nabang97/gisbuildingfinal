@@ -242,6 +242,7 @@
                         <div class="panel-body table-responsive card" id="rute">
                             <!-- <div id="detailrute"></div> -->
                         </div>
+                        <div id="waktu-rute"></div>
                         <font id="found"></font>
                         <div class="panel-body table-responsive" id="panjangtabel">
                             <table class="table table-striped table-bordered table-hover" id="tampilanpencarian" style="background-color: white; border-radius: 7%">
@@ -255,6 +256,7 @@
                                 </tbody>
                             </table>
                         </div>
+                        <div id="waktu"></div>
                     </div>
                 </div>
                 <!-- SAMPAI DISINI -->
@@ -449,6 +451,9 @@
                      </center>
                 </div>
                 <div id="konten-bang"></div>
+                <div style="float: right; background-color: white">
+                    <div id="waktu-detail"></div>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -464,6 +469,9 @@
         $("#jenis-bang").append("<i class='fas fa-store-alt'></i> Micro, Small, Medium, Enterprise Building Info")
         $('#info-bang').modal('show');
         $('#konten-bang').load("info-umkm.php?id="+id);
+        responseTime=Date.now() - startTime;
+        console.log("ResponseTime: "+responseTime);
+        $('#waktu-detail').append("Response Time: "+responseTime+" ms");
     }
 
     function detailibadah(id) {
@@ -472,6 +480,9 @@
         $("#jenis-bang").append("<i class='fas fa-mosque'></i> Worship Building Info")
         $('#info-bang').modal('show');
         $('#konten-bang').load("info-ibadah.php?id="+id);
+        responseTime=Date.now() - startTime;
+        console.log("ResponseTime: "+responseTime);
+        $('#waktu-detail').append("Response Time: "+responseTime+" ms");
     }
 
     function detailpendidikan(id) {
@@ -480,6 +491,9 @@
         $("#jenis-bang").append("<i class='fas fa-school'></i> Educational Building Info")
         $('#info-bang').modal('show');
         $('#konten-bang').load("info-pendidikan.php?id="+id);
+        responseTime=Date.now() - startTime;
+        console.log("ResponseTime: "+responseTime);
+        $('#waktu-detail').append("Response Time: "+responseTime+" ms");
     }
 
     function detailkesehatan(id) {
@@ -488,6 +502,9 @@
         $("#jenis-bang").append("<i class='fas fa-hospital-alt'></i> Health Building Info")
         $('#info-bang').modal('show');
         $('#konten-bang').load("info-kesehatan.php?id="+id);
+        responseTime=Date.now() - startTime;
+        console.log("ResponseTime: "+responseTime);
+        $('#waktu-detail').append("Response Time: "+responseTime+" ms");
     }
 
     function detailkantor(id) {
@@ -496,6 +513,9 @@
         $("#jenis-bang").append("<i class='fa fa-bank'></i> Office Building Info")
         $('#info-bang').modal('show');
         $('#konten-bang').load("info-kantor.php?id="+id);
+        responseTime=Date.now() - startTime;
+        console.log("ResponseTime: "+responseTime);
+        $('#waktu-detail').append("Response Time: "+responseTime+" ms");
     }
 
     function detailrumah(id) {
@@ -504,9 +524,13 @@
         $("#jenis-bang").append("<i class='ti-home'></i> House Building Info")
         $('#info-bang').modal('show');
         $('#konten-bang').load("info-rumah.php?id="+id);
+        responseTime=Date.now() - startTime;
+        console.log("ResponseTime: "+responseTime);
+        $('#waktu-detail').append("Response Time: "+responseTime+" ms");
     }
 
     function load_popup(){
+        setStartTime();
         $( document ).ajaxStart( function() {
             $( "#ajax-wait" ).css({
             left: ( $( window ).width() - 32 ) / 2 + "px", // 32 = lebar gambar

@@ -1,4 +1,5 @@
 function tampilsemuapendidikan() {
+  setStartTime();
   $.ajax({
     url: 'act/pendidikan_cari.php',
     data: "",
@@ -12,7 +13,6 @@ function tampilsemuapendidikan() {
       $('#notifikasi').append(thrownError);
     }
   });
-
 }
 
 function cari_pendidikan(rows) {
@@ -52,9 +52,13 @@ function cari_pendidikan(rows) {
     $('#found').append("Found: " + a)
     $('#hidecari').show();
   }
+  responseTime=Date.now() - startTime;
+  console.log("ResponseTime: "+responseTime);
+  $('#waktu').append("Response Time: "+responseTime+" ms");
 }
 
 function carinamapendidikan() { 
+  setStartTime();
   var namapendidikan = document.getElementById("namapendidikan").value;
   $.ajax({
     url: 'act/pendidikan_cari-nama.php?cari_nama=' + namapendidikan,
@@ -72,6 +76,7 @@ function carinamapendidikan() {
 }
 
 function carijenis_pendidikan() { 
+  setStartTime();
   var jenis = document.getElementById("jenispendidikan").value;
   console.log("cari pendidikan dengan jenis tingkatan: " + jenis);
   $.ajax({
@@ -90,6 +95,7 @@ function carijenis_pendidikan() {
 }
 
 function caritipe_pendidikan() { 
+  setStartTime();
   var stat = document.getElementById("tipependidikan").value;
   console.log("cari pendidikan dengan tipe: " + stat);
   $.ajax({
@@ -108,6 +114,7 @@ function caritipe_pendidikan() {
 }
 
 function cariluasbang_pendidikan() { 
+  setStartTime();
   var awal = document.getElementById("pendidikan_awalbang").value;
   var akhir = document.getElementById("pendidikan_akhirbang").value;
   console.log("cari b.pendidikan dengan luas bangunan: " + awal + " - " +akhir);
@@ -127,6 +134,7 @@ function cariluasbang_pendidikan() {
 }
 
 function cariluastanah_pendidikan() { 
+  setStartTime();
   var awal = document.getElementById("pendidikan_awaltanah").value;
   var akhir = document.getElementById("pendidikan_akhirtanah").value;
   console.log("cari b.pendidikan dengan luas tanah: " + awal + " - " +akhir);
@@ -146,6 +154,7 @@ function cariluastanah_pendidikan() {
 }
 
 function carikons_pendidikan() { 
+  setStartTime();
   var jenis_k = document.getElementById("jeniskons_pendidikan").value;
   console.log("cari pendidikan dengan jenis konstruksi: " + jenis_k);
   $.ajax({
@@ -164,6 +173,7 @@ function carikons_pendidikan() {
 }
 
 function carijorong_pendidikan() { 
+  setStartTime();
   var jorong = document.getElementById("jorong_pendidikan").value;
   console.log("cari b pendidikan dengan jorong: " + jorong);
   $.ajax({
@@ -277,6 +287,7 @@ function cekRadiuspendidikan() {
 }
 
 function tampilkanradiuspendidikan() { //menampilkan bang pendidikan berdasarkan radius
+  setStartTime();
   $('#hasilcari1').show();
   $('#hasilcari').empty();
   $('#found').empty();
@@ -325,7 +336,7 @@ function tampilkanradiuspendidikan() { //menampilkan bang pendidikan berdasarkan
 }
 
 function carifasilitas_pendidikan(){
-
+  setStartTime();
   $('#hasilcari1').show();
   $('#hasilcari').empty();
   hapusInfo();

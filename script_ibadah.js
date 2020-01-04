@@ -1,4 +1,5 @@
 function tampilsemuaibadah() {
+  setStartTime();
   $.ajax({
     url: 'act/ibadah_cari.php',
     data: "",
@@ -52,9 +53,13 @@ function cari_ibadah(rows) {
     $('#found').append("Found: " + a)
     $('#hidecari').show();
   }
+  responseTime=Date.now() - startTime;
+  console.log("ResponseTime: "+responseTime);
+  $('#waktu').append("Response Time: "+responseTime+" ms");
 }
 
 function carinamaibadah() { 
+  setStartTime();
   var namaibadah = document.getElementById("namaibadah").value;
   $.ajax({
     url: 'act/ibadah_cari-nama.php?cari_nama=' + namaibadah,
@@ -72,6 +77,7 @@ function carinamaibadah() {
 }
 
 function carijenis_ibadah() { 
+  setStartTime();
   var jenis = document.getElementById("jenisibadah").value;
   console.log("cari ibadah dengan jenis: " + jenis);
   $.ajax({
@@ -90,6 +96,7 @@ function carijenis_ibadah() {
 }
 
 function carikons_ibadah() { 
+  setStartTime();
   var jenis_k = document.getElementById("jeniskons_ibadah").value;
   console.log("cari ibadah dengan jenis konstruksi: " + jenis_k);
   $.ajax({
@@ -108,6 +115,7 @@ function carikons_ibadah() {
 }
 
 function cariluasbang_ibadah() { 
+  setStartTime();
   var awal = document.getElementById("ibadah_awalbang").value;
   var akhir = document.getElementById("ibadah_akhirbang").value;
   console.log("cari ibadah dengan luas bangunan: " + awal + " - " +akhir);
@@ -127,6 +135,7 @@ function cariluasbang_ibadah() {
 }
 
 function cariluastanah_ibadah() { 
+  setStartTime();
   var awal = document.getElementById("ibadah_awaltanah").value;
   var akhir = document.getElementById("ibadah_akhirtanah").value;
   console.log("cari ibadah dengan luas tanah: " + awal + " - " +akhir);
@@ -146,6 +155,7 @@ function cariluastanah_ibadah() {
 }
 
 function caritahun_ibadah() { 
+  setStartTime();
   var awal = document.getElementById("ibadah_awaltahun").value;
   var akhir = document.getElementById("ibadah_akhirtahun").value;
   console.log("cari ibadah dengan tahun berdiri: " + awal + " - " +akhir);
@@ -165,6 +175,7 @@ function caritahun_ibadah() {
 }
 
 function carijorong_ibadah() { 
+  setStartTime();
   var jorong = document.getElementById("jorong_ibadah").value;
   console.log("cari b ibadah dengan jorong: " + jorong);
   $.ajax({
@@ -278,6 +289,7 @@ function cekRadiusibadah() {
 }
 
 function tampilkanradiusibadah() { //menampilkan bang ibadah berdasarkan radius
+  setStartTime();
   $('#hasilcari1').show();
   $('#hasilcari').empty();
   $('#found').empty();
@@ -326,7 +338,7 @@ function tampilkanradiusibadah() { //menampilkan bang ibadah berdasarkan radius
 }
 
 function carifasilitas_ibadah(){
-
+  setStartTime();
   $('#hasilcari1').show();
   $('#hasilcari').empty();
   hapusInfo();

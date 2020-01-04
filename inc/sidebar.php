@@ -19,7 +19,7 @@ select {
             <nav>
                 <ul class="metismenu" id="menu">
                     <li>
-                        <a href="javascript:void(0)" aria-expanded="true"><i class="ti-home"></i><span>House</span></a>
+                        <a href="javascript:void(0)" aria-expanded="true" name="terbatas"><i class="ti-home"></i><span>House</span></a>
                         <ul class="collapse">
                             <li><a href="javascript:void(0)" aria-expanded="true">Search By Survey ID</a>
                                 <ul class="collapse">
@@ -808,6 +808,36 @@ select {
                                             <button class="btn btn-primary" type="button" onclick="carimodel()"><i class="fa fa-search"></i></button>
                                         </div>
                                     </div>
+                                    <div class="custom-control custom-checkbox custom-control-inline">
+						                <input type="checkbox" class="custom-control-input" id="model_rumah" name="model">
+						                <label class="custom-control-label" for="model_rumah" style="color: lightgray">House &emsp;</label>
+						            </div>
+
+						            <div class="custom-control custom-checkbox custom-control-inline">
+						                <input type="checkbox" class="custom-control-input" id="model_umkm" name="model">
+						                <label class="custom-control-label" for="model_umkm" style="color: lightgray">MSME Building</label>
+						            </div>
+
+						            <div class="custom-control custom-checkbox custom-control-inline">
+						                <input type="checkbox" class="custom-control-input" id="model_ibadah" name="model">
+						                <label class="custom-control-label" for="model_ibadah" style="color: lightgray">Worship Building</label>
+						            </div>
+
+						            <div class="custom-control custom-checkbox custom-control-inline">
+						                <input type="checkbox" class="custom-control-input" id="model_kantor" name="model">
+						                <label class="custom-control-label" for="model_kantor" style="color: lightgray">Office Building</label>
+						            </div>
+
+						            <div class="custom-control custom-checkbox custom-control-inline">
+						                <input type="checkbox" class="custom-control-input" id="model_pendk" name="model">
+						                <label class="custom-control-label" for="model_pendk" style="color: lightgray">Educational Building</label>
+						            </div>
+
+						            <div class="custom-control custom-checkbox custom-control-inline">
+						                <input type="checkbox" class="custom-control-input" id="model_kes" name="model">
+						                <label class="custom-control-label" for="model_kes" style="color: lightgray">Health Building</label>
+						            </div>
+						            <br/><br/><br/><br/>.
                             </li>
                         </ul>
                     </ul>
@@ -979,7 +1009,7 @@ select {
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Choose health facilities</h5>
+                <h6 class="modal-title">Choose health building facilities</h6>
                 <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
             </div>
             <div class="modal-body">

@@ -9,6 +9,12 @@ var nkesehatan = 0; var digitkesehatan = [];
 var map;
 var server="";
 
+function setStartTime(){
+  startTime = Date.now();
+  $('#waktu').empty();
+  $('#waktu-rute').empty();
+  $('#waktu-detail').empty();
+}
 
 var myStyle = [ { "featureType": "administrative", "elementType": "geometry", "stylers": [ { "visibility": "off" } ] }, { "featureType": "landscape.man_made", "elementType": "geometry.fill", "stylers": [ { "visibility": "simplified" } ] }, { "featureType": "landscape.man_made", "elementType": "geometry.stroke", "stylers": [ { "color": "#eeeeee" }, { "visibility": "on" } ] }, { "featureType": "poi", "stylers": [ { "visibility": "off" } ] }, { "featureType": "road", "elementType": "labels.icon", "stylers": [ { "visibility": "off" } ] }, { "featureType": "road.local", "elementType": "geometry.fill", "stylers": [ { "visibility": "off" } ] }, { "featureType": "road.local", "elementType": "geometry.stroke", "stylers": [ { "weight": 1 } ] }, { "featureType": "transit", "stylers": [ { "visibility": "off" } ] } ];
 function loadpeta() {
@@ -885,6 +891,7 @@ function hapusRadius() {
 
 
 function callRoute(start, end, nama) {
+  setStartTime();
   if (pos == 'null' || typeof (pos) == "undefined") {
     $('#atur-posisi').modal('show');
   } 
@@ -914,6 +921,9 @@ function callRoute(start, end, nama) {
     $('#rute').append('<button class="btn btn-default btn-xs" onclick="tutuprute()" id="tutuprute" style="float: right;"><i class="fas fa-snowplow"></i> Clear Route</button>')
     $('#rute').append("<div class='panel-body' style='max-height:350px;overflow:auto;'><div class='form-group' id='detailrute'></div></div></div>");
     directionsDisplay.setPanel(document.getElementById('detailrute'));
+    responseTime=Date.now() - startTime;
+    console.log("ResponseTime: "+responseTime);
+    $('#waktu-rute').append("Response Time: "+responseTime+" ms <br/>");
   }
 }
 
@@ -985,6 +995,7 @@ function refresh() {
 }
 
 function carimodel() { 
+  setStartTime();
   hapusInfo();
   hapusRadius();
   clearroute2();
@@ -1249,4 +1260,7 @@ function model_umkm(rows) {
   if (rows==null) {
     $('#hasilcari').append("<tr><td colspan='2'>No MSME building data</td></tr>");
   }
+  responseTime=Date.now() - startTime;
+  console.log("ResponseTime: "+responseTime);
+  $('#waktu').append("Response Time: "+responseTime+" ms");
 }

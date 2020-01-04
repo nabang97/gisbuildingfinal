@@ -18,6 +18,12 @@
 	$port = "5432";
 	$dbname = "afwubqsz";
 
+	$host = "localhost";
+	$user = "postgres";
+	$pass = "root";
+	$port = "5432";
+	$dbname = "ta2";
+
 	$conn = pg_connect("host=".$host." port=".$port." dbname=".$dbname." user=".$user." password=".$pass) or die("Gagal");
 
 ?>

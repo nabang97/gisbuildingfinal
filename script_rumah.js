@@ -1,4 +1,5 @@
 function tampilsemuarumah(){ //menampilkan semua rumah
+  setStartTime();
   $.ajax({ url: 'act/rumah_tampil.php', data: "", dataType: 'json', success: function (rows){
     cari_rumah(rows);
   }});
@@ -6,12 +7,14 @@ function tampilsemuarumah(){ //menampilkan semua rumah
 }
 
 function rumahkosong(){ 
+  setStartTime();
   $.ajax({ url: 'act/rumah_kosong.php', data: "", dataType: 'json', success: function (rows){
     cari_rumah(rows);
   }});
 }
 
 function rumahberpenghuni(){ 
+  setStartTime();
   $.ajax({ url: 'act/rumah_berpenghuni.php', data: "", dataType: 'json', success: function (rows){
     cari_rumah(rows);
   }});
@@ -61,6 +64,10 @@ function cari_rumah(rows)
 	    }
       $('#found').append("Found: "+a)
       $('#hidecari').show();
+      responseTime=Date.now() - startTime;
+      console.log("ResponseTime: "+responseTime);
+      $('#waktu').append("Response Time: "+responseTime+" ms");
+      //alert("Response Time: "+responseTime+" ms");
 }
 
 
@@ -146,6 +153,7 @@ function aktifkanRadius() { //fungsi radius rumah
 
 
  function tampilkanradius(){ //menampilkan rumah berdasarkan radius
+  setStartTime();
    console.log("panggil radiusnyaa");
     $('#hasilcari1').show();
     $('#hasilcari').empty();
@@ -195,6 +203,7 @@ function teksradius()
   }
 
 function cari_idrumah() { 
+  setStartTime();
   var idrumah = document.getElementById("id-rumah").value;
   console.log("cari rumah dengan id: " + idrumah);
   if (idrumah==null || idrumah=="") {
@@ -220,6 +229,7 @@ function cari_idrumah() {
 }
 
 function carikons_rumah() { 
+  setStartTime();
   var jenis_k = document.getElementById("jeniskons_rumah").value;
   console.log("cari rumah dengan jenis konstruksi: " + jenis_k);
   $.ajax({
@@ -238,6 +248,7 @@ function carikons_rumah() {
 }
 
 function caritahun_rumah() { 
+  setStartTime();
   var awal = document.getElementById("rumah_awaltahun").value;
   var akhir = document.getElementById("rumah_akhirtahun").value;
   console.log("cari rumah dengan tahun berdiri: " + awal + " - " +akhir);
@@ -257,6 +268,7 @@ function caritahun_rumah() {
 }
 
 function carilistrik_rumah() { 
+  setStartTime();
   var awal = document.getElementById("rumah_awallistrik").value;
   var akhir = document.getElementById("rumah_akhirlistrik").value;
   console.log("cari listrik dengan kapsitas: " + awal + " - " +akhir);
@@ -276,6 +288,7 @@ function carilistrik_rumah() {
 }
 
 function cari_pemilik() { 
+  setStartTime();
   var pemilik = document.getElementById("pemilik").value;
   if (pemilik==null || pemilik=="") {
     $('#ket-p').empty();
@@ -300,6 +313,7 @@ function cari_pemilik() {
 }
 
 function cari_nikpemilik() { 
+  setStartTime();
   var nikpemilik = document.getElementById("nikpemilik").value;
   if (nikpemilik==null || nikpemilik=="") {
     $('#ket-p').empty();
@@ -324,6 +338,7 @@ function cari_nikpemilik() {
 }
 
 function cari_penghuni() { 
+  setStartTime();
   var penghuni = document.getElementById("penghuni").value;
   if (penghuni==null || penghuni=="") {
     $('#ket-p').empty();
@@ -348,6 +363,7 @@ function cari_penghuni() {
 }
 
 function cari_nikpenghuni() { 
+  setStartTime();
   var nikpenghuni = document.getElementById("nikpenghuni").value;
   if (nikpenghuni==null || nikpenghuni=="") {
     $('#ket-p').empty();
@@ -372,6 +388,7 @@ function cari_nikpenghuni() {
 }
 
 function cari_kk() { 
+  setStartTime();
   var kk = document.getElementById("kk").value;
   if (kk==null || kk=="") {
     $('#ket-p').empty();
@@ -414,6 +431,7 @@ function cari_kk() {
 // }
 
 function cari_suku() { 
+  setStartTime();
   var suku = document.getElementById("suku").value;
     $.ajax({
       url: 'act/rumah_cari-suku.php?suku=' + suku,
