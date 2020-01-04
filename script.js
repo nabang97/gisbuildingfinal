@@ -893,6 +893,7 @@ function callRoute(start, end, nama) {
     $('#atur-posisi').modal('show');
   } 
   else {
+    $('#waktu-rute').empty();
     clearroute2();
     directionsService = new google.maps.DirectionsService;
     directionsDisplay = new google.maps.DirectionsRenderer;
@@ -964,7 +965,6 @@ function rutetampil() {
   $("#infoev").hide();
   $("#infoo").show();
   $("#rute").show();
-  $('#waktu-rute').empty();
 }
 
 
