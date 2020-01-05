@@ -1565,8 +1565,6 @@ function viewdigitnagari() {
 function carimodel(model,building){
   clearMarker();
   hapusRadius();
-  markerposition.setMap(null);
-  setMarkerPosition(lat,lng,'Current Position');
   console.log(model);
   console.log(building);
   var buildings = building.split(',');
