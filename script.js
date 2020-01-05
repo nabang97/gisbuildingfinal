@@ -1100,6 +1100,9 @@ function carimodel() {
     }
   });
 }
+responseTime=Date.now() - startTime;
+console.log("ResponseTime: "+responseTime);
+$('#waktu').append("Response Time: "+responseTime+" ms");
 }
 
 function model_ibadah(rows) {
@@ -1258,7 +1261,4 @@ function model_umkm(rows) {
   if (rows==null) {
     $('#hasilcari').append("<tr><td colspan='2'>No MSME building data</td></tr>");
   }
-  responseTime=Date.now() - startTime;
-  console.log("ResponseTime: "+responseTime);
-  $('#waktu').append("Response Time: "+responseTime+" ms");
 }
