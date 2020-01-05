@@ -1561,3 +1561,65 @@ function viewdigitnagari() {
   });
 
 }
+
+function carimodel(model,building){
+  clearMarker();
+  hapusRadius();
+  console.log(model);
+  console.log(building);
+  var buildings = building.split(',');
+  var urlhouse = server+'act/rumah_cari-model.php?model='+model+'';
+  var urlworship = server+'act/ibadah_cari-model.php?model='+model+'';
+  var urlmsme = server+'act/umkm_cari-model.php?model='+model+'';
+  var urleducation = server+'act/pendidikan_cari-model.php?model='+model+'';
+  var urlhealth =server+'act/kesehatan_cari-model.php?model='+model+'';
+  var urloffice = server+'act/kantor_cari-model.php?model='+model+'';
+
+  buildings.forEach(function(value){
+    console.log(value);
+    switch (value) {
+      case 'house':
+      $.ajax({url: urlhouse, data: "", dataType: 'json', success: function(rows){
+        console.log(rows);
+          showDataSearch(rows,"home.png");
+
+      }});//end ajax
+      break;
+      case 'office':
+      $.ajax({url: urloffice, data: "", dataType: 'json', success: function(rows){
+        console.log(rows);
+          showDataSearch(rows,"kantor.png");
+      }});//end ajax
+      break;
+      case 'worship':
+      $.ajax({url: urlworship, data: "", dataType: 'json', success: function(rows){
+        console.log(rows);
+          showDataSearch(rows,"musajik.png");
+      }});//end ajax
+      break;
+      case 'msme':
+      $.ajax({url: urlmsme, data: "", dataType: 'json', success: function(rows){
+        console.log(rows);
+          showDataSearch(rows,"kadai.png");
+      }});//end ajax
+      break;
+      case 'health':
+      $.ajax({url: urlhealth, data: "", dataType: 'json', success: function(rows){
+        console.log(rows);
+          showDataSearch(rows,"kesehatan.png");
+      }});//end ajax
+      break;
+      case 'educational':
+      $.ajax({url: urleducation, data: "", dataType: 'json', success: function(rows){
+        console.log(rows);
+          showDataSearch(rows,"sekolah.png");
+      }});//end ajax
+      break;
+      default:
+
+    }
+  });
+  setMapOnAll(map);
+  DraggerListerner();
+
+}
