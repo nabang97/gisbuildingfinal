@@ -1,5 +1,5 @@
 <?php
-require '../inc/koneksi.php';
+require '../mobile/koneksi.php';
 $model = $_GET["model"];
 
 $querysearch = " 	SELECT office_building_id, name_of_office_building, ST_X(ST_Centroid(geom)) AS longitude, ST_Y(ST_CENTROID(geom)) AS latitude

@@ -1579,50 +1579,47 @@ function carimodel(model,building){
     console.log(value);
     switch (value) {
       case 'house':
-      // $.ajax({url: urlhouse, data: "", dataType: 'json', success: function(rows){
-      //   console.log(rows);
-      //     showDataSearch(rows,"home.png");
-      //     setMapOnAll(map);
-      // }});//end ajax
+      $.ajax({url: urlhouse, data: "", dataType: 'json', success: function(rows){
+        console.log(rows);
+          showDataSearch(rows,"home.png");
+
+      }});//end ajax
       break;
       case 'office':
-      // $.ajax({url: urloffice, data: "", dataType: 'json', success: function(rows){
-      //   console.log(rows);
-      //     showDataSearch(rows,"kantor.png");
-      //     setMapOnAll(map);
-      // }});//end ajax
+      $.ajax({url: urloffice, data: "", dataType: 'json', success: function(rows){
+        console.log(rows);
+          showDataSearch(rows,"kantor.png");
+      }});//end ajax
       break;
       case 'worship':
-      // $.ajax({url: urlworship, data: "", dataType: 'json', success: function(rows){
-      //   console.log(rows);
-      //     showDataSearch(rows,"musajik.png");
-      //     setMapOnAll(map);
-      // }});//end ajax
+      $.ajax({url: urlworship, data: "", dataType: 'json', success: function(rows){
+        console.log(rows);
+          showDataSearch(rows,"musajik.png");
+      }});//end ajax
       break;
       case 'msme':
-      // $.ajax({url: urlmsme, data: "", dataType: 'json', success: function(rows){
-      //   console.log(rows);
-      //     showDataSearch(rows,"kadai.png");
-      //     setMapOnAll(map);
-      // }});//end ajax
+      $.ajax({url: urlmsme, data: "", dataType: 'json', success: function(rows){
+        console.log(rows);
+          showDataSearch(rows,"kadai.png");
+      }});//end ajax
       break;
       case 'health':
-      // $.ajax({url: urlhealth, data: "", dataType: 'json', success: function(rows){
-      //   console.log(rows);
-      //     showDataSearch(rows,"kesehatan.png");
-      //     setMapOnAll(map);
-      // }});//end ajax
+      $.ajax({url: urlhealth, data: "", dataType: 'json', success: function(rows){
+        console.log(rows);
+          showDataSearch(rows,"kesehatan.png");
+      }});//end ajax
       break;
       case 'educational':
-      // $.ajax({url: urleducation, data: "", dataType: 'json', success: function(rows){
-      //   console.log(rows);
-      //     showDataSearch(rows,"sekolah.png");
-      //     setMapOnAll(map);
-      // }});//end ajax
+      $.ajax({url: urleducation, data: "", dataType: 'json', success: function(rows){
+        console.log(rows);
+          showDataSearch(rows,"sekolah.png");
+      }});//end ajax
       break;
       default:
 
     }
   });
+  setMapOnAll(map);
+  DraggerListerner();
 
 }
