@@ -518,7 +518,7 @@ function layerjorong() {
         });
         n = n + 1;
       }
-    
+
     cek();
   } else {
     var n = 0;
@@ -668,14 +668,14 @@ function ceklis() {
   var x = document.getElementsByName("layerpeta");
   if (document.getElementById("semua").checked == 1) {
     var i;
-    for (i = 0; i < x.length; i++) {    
-      document.getElementsByName("layerpeta")[i].checked = 1; 
+    for (i = 0; i < x.length; i++) {
+      document.getElementsByName("layerpeta")[i].checked = 1;
     }
   }
   else {
     var i;
-    for (i = 0; i < x.length; i++) {    
-      document.getElementsByName("layerpeta")[i].checked = 0; 
+    for (i = 0; i < x.length; i++) {
+      document.getElementsByName("layerpeta")[i].checked = 0;
     }
   }
   layernagari();
@@ -693,14 +693,14 @@ function cek() {
   x = document.getElementsByName("layerpeta");
   var stats=true;
   var i;
-  for (i = 0; i < x.length; i++) {    
+  for (i = 0; i < x.length; i++) {
     if (document.getElementsByName("layerpeta")[i].checked == 0) {
       stats=false;
     }
   }
   if (stats==true) {
     document.getElementById("semua").checked = 1;
-  } 
+  }
 }
 
 function semuadigitasi() {
@@ -716,8 +716,8 @@ function semuadigitasi() {
   document.getElementById("semua").checked = 1;
   var x = document.getElementsByName("layerpeta");
   var i;
-  for (i = 0; i < x.length; i++) {    
-    document.getElementsByName("layerpeta")[i].checked = 1; 
+  for (i = 0; i < x.length; i++) {
+    document.getElementsByName("layerpeta")[i].checked = 1;
   }
 }
 
@@ -757,7 +757,7 @@ function legenda() {
     map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(legend);
     $('#legend').show();
     tampillegenda = true;
-  } 
+  }
   else {
     $('#legend').show();
   }
@@ -891,7 +891,7 @@ function hapusRadius() {
 function callRoute(start, end, nama) {
   if (pos == 'null' || typeof (pos) == "undefined") {
     $('#atur-posisi').modal('show');
-  } 
+  }
   else {
     $('#waktu-rute').empty();
     clearroute2();
@@ -992,7 +992,7 @@ function refresh() {
   $('#legenda').append('<button class="btn btn-default" title="show legend" onclick="legenda()"><i class="fa fa-globe"></i></button>');
 }
 
-function carimodel() { 
+function carimodel() {
   setStartTime();
   hapusInfo();
   hapusRadius();
@@ -1100,9 +1100,6 @@ function carimodel() {
     }
   });
 }
-responseTime=Date.now() - startTime;
-console.log("ResponseTime: "+responseTime);
-$('#waktu').append("Response Time: "+responseTime+" ms");
 }
 
 function model_ibadah(rows) {
@@ -1132,9 +1129,9 @@ function model_ibadah(rows) {
 }
 
 function model_rumah(rows)
-{   
-  for (var i in rows) 
-    {   
+{
+  for (var i in rows)
+    {
       var row     = rows[i];
       var id   = row.id;
       var latitude  = row.latitude ;
@@ -1150,13 +1147,16 @@ function model_rumah(rows)
           markersDua.push(marker);
           map.setCenter(centerBaru);
           klikInfoWindow(id);
-          map.setZoom(14);            
+          map.setZoom(14);
           tampilkanhasilcari();
           $('#hasilcari').append("<tr><td><i class='ti-home'></i> "+id+"</td><td style='text-align: center'><button class='btn btn-theme04 btn-xs' onclick='detailrumah_infow(\""+id+"\");' title='tampilkan info'><i class='fa fa-search-plus'></i></button></td></tr>");
     }
   if (rows==null) {
     $('#hasilcari').append("<tr><td colspan='2'>No house data</td></tr>");
   }
+  responseTime=Date.now() - startTime;
+  console.log("ResponseTime: "+responseTime);
+  $('#waktu').append("Response Time: "+responseTime+" ms");
 }
 
 function model_kantor(rows) {
@@ -1261,4 +1261,7 @@ function model_umkm(rows) {
   if (rows==null) {
     $('#hasilcari').append("<tr><td colspan='2'>No MSME building data</td></tr>");
   }
+  responseTime=Date.now() - startTime;
+  console.log("ResponseTime: "+responseTime);
+  $('#waktu').append("Response Time: "+responseTime+" ms");
 }
