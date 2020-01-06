@@ -1154,9 +1154,9 @@ function model_rumah(rows)
   if (rows==null) {
     $('#hasilcari').append("<tr><td colspan='2'>No house data</td></tr>");
   }
-  // responseTime=Date.now() - startTime;
-  // console.log("ResponseTime: "+responseTime);
-  // $('#waktu').append("Response Time rumah : "+responseTime+" ms");
+  responseTime=Date.now() - startTime;
+  console.log("ResponseTime: "+responseTime);
+  $('#waktu').append("Response Time rumah : "+responseTime+" ms");
 }
 
 function model_kantor(rows) {
