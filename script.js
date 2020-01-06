@@ -1156,7 +1156,7 @@ function model_rumah(rows)
   }
   responseTime=Date.now() - startTime;
   console.log("ResponseTime: "+responseTime);
-  $('#waktu').append("Response Time: "+responseTime+" ms");
+  $('#waktu').append("Response Time rumah : "+responseTime+" ms");
 }
 
 function model_kantor(rows) {
