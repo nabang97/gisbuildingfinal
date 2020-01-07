@@ -26,6 +26,8 @@ if (isset($_REQUEST['action'])){
   $action="";
 }
 
+define("SITE_ROOT", dirname(dirname(__FILE__)));
+
 // var_dump($_REQUEST);
 // var_dump($_POST);
 // die();
@@ -98,25 +100,25 @@ if ($action == "overview"){
 
       if($name==$filename){
         if ($buildingtype == "Worship") {
-          $uploaddir = '../foto/b_ibadah/';
+          $uploaddir = '/foto/b-ibadah/';
         }elseif ($buildingtype == "Office") {
-          $uploaddir = '../foto/kantor/';
+          $uploaddir = '/foto/kantor/';
         }elseif ($buildingtype == "Health") {
-          $uploaddir = '../foto/b-kesehatan/';
+          $uploaddir = '/foto/b-kesehatan/';
         }elseif ($buildingtype == "Educational") {
-          $uploaddir = '../foto/b-pendidikan/';
+          $uploaddir = '/foto/b-pendidikan/';
         }elseif ($buildingtype == "Msme") {
-          $uploaddir = '../foto/umkm/';
+          $uploaddir = '/foto/umkm/';
         }elseif ($buildingtype == "House") {
-          $uploaddir = '../foto/rumah/';
+          $uploaddir = '/foto/rumah/';
         }
 
         // $uploaddir = './uploads/';
-        $uploadfile = $uploaddir . basename($_FILES[$name]['name']);
+        $uploadfile = SITE_ROOT.$uploaddir.basename($_FILES[$name]['name']);
        	fwrite($file_handle, date("d.m.Y H:i:s", time()).": MoveUploadedFile(".$_FILES[$name]['name'].")\r\n");
-        var_dump(move_uploaded_file($_FILES[$name]['tmp_name'], $uploadfile));
-        echo json_encode($_REQUEST);
-        die();
+        // var_dump(move_uploaded_file($_FILES[$name]['tmp_name'], $uploadfile));
+        // echo json_encode($_REQUEST);
+        // die();
         if (move_uploaded_file($_FILES[$name]['tmp_name'], $uploadfile)) {
 
           $uploads[$name]["status"] = $_FILES[$name]['name']." saved successfull";
