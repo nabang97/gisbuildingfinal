@@ -26,7 +26,8 @@ if (isset($_REQUEST['action'])){
   $action="";
 }
 
-var_dump($_REQUEST['keyname']);
+var_dump($_REQUEST);
+var_dump($_POST);
 die();
 $appresult = array();
 
