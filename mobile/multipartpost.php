@@ -88,9 +88,7 @@ if ($action == "overview"){
     	fwrite($file_handle, date("d.m.Y H:i:s", time()).": ".$fname."=".$fvalue."\r\n");
     }
   	fwrite($file_handle, date("d.m.Y H:i:s", time()).": Upload of \"".$name."\"\r\n");
-    var_dump($_REQUEST);
-    echo json_encode($_REQUEST);
-    die();
+
     if (isset($_REQUEST['keyname'])) {
       $filename=trim($_REQUEST['keyname']);
       $id = trim($_REQUEST['idbang']);
@@ -112,6 +110,11 @@ if ($action == "overview"){
         }elseif ($buildingtype == "House") {
           $uploaddir = './foto/rumah/';
         }
+
+        var_dump($_REQUEST);
+        echo json_encode($_REQUEST);
+        die();
+        
         // $uploaddir = './uploads/';
         $uploadfile = $uploaddir . basename($_FILES[$name]['name']);
         var_dump($uploadfile);
