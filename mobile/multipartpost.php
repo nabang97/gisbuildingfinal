@@ -88,12 +88,16 @@ if ($action == "overview"){
     	fwrite($file_handle, date("d.m.Y H:i:s", time()).": ".$fname."=".$fvalue."\r\n");
     }
   	fwrite($file_handle, date("d.m.Y H:i:s", time()).": Upload of \"".$name."\"\r\n");
+    var_dump($_REQUEST);
+    echo json_encode($_REQUEST);
+    die();
     if (isset($_REQUEST['keyname'])) {
       $filename=trim($_REQUEST['keyname']);
       $id = trim($_REQUEST['idbang']);
       $tgl = trim($_REQUEST['tanggal']);
       $buildingtype = trim($_REQUEST['buildingtype']);
       $extensi = pathinfo($_FILES[$name]['name'],PATHINFO_EXTENSION);
+
       if($name==$filename){
         if ($buildingtype == "Worship") {
           $uploaddir = './foto/b_ibadah/';
@@ -113,6 +117,7 @@ if ($action == "overview"){
         var_dump($uploadfile);
         die();
        	fwrite($file_handle, date("d.m.Y H:i:s", time()).": MoveUploadedFile(".$_FILES[$name]['name'].")\r\n");
+
         if (move_uploaded_file($_FILES[$name]['tmp_name'], $uploadfile)) {
           $uploads[$name]["status"] = $_FILES[$name]['name']." saved successfull";
         	fwrite($file_handle, date("d.m.Y H:i:s", time()).": ->moving ".$_FILES[$name]['name']." successfull\r\n");
