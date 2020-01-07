@@ -263,7 +263,7 @@ function loadMap(lat,lng){
     zoomControl: true,
     scaleControl: true,
     rotateControl: true,
-    streetViewControl: true,
+    streetViewControl: false,
     fullscreenControl: true
   });
   map.mapTypes.set('mystyle', new google.maps.StyledMapType(myStyle, { name: 'Styled Map' }));
