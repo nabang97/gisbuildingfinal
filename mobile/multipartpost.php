@@ -3,6 +3,7 @@ header("Content-type: text/plain");
 include "mobile/koneksi.php";
 
 $file_handle = fopen('./multipartpost.log', 'a+');
+die();
 if (isset($_REQUEST['note1'])){
   $note1=trim($_REQUEST['note1']);
 } else {
