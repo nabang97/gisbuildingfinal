@@ -26,9 +26,9 @@ if (isset($_REQUEST['action'])){
   $action="";
 }
 
-var_dump($_REQUEST);
-var_dump($_POST);
-die();
+// var_dump($_REQUEST);
+// var_dump($_POST);
+// die();
 $appresult = array();
 
 if (isset($_REQUEST['DeviceID'])){$DeviceID=trim($_REQUEST['DeviceID']);} else {$DeviceID="";}
