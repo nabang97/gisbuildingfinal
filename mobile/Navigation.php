@@ -60,7 +60,7 @@
 
     function initMap() {
       //loadMap(latposition,lngposition);
-      
+
       switch (building) {
         case "house":
             photo = "home.png";
@@ -80,7 +80,7 @@
         case "worship":
             photo = "musajik.png";
           break;
-        default:  photo = "home.png";
+        default:  photo = "sekolah.png";
 
       }
       currentlocation = {lat: latposition, lng: lngposition};
