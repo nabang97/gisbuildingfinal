@@ -26,7 +26,7 @@ if (isset($_REQUEST['action'])){
   $action="";
 }
 
-var_dump($filename);
+var_dump($_REQUEST['keyname']);
 die();
 $appresult = array();
 
