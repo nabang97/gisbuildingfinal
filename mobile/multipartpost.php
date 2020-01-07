@@ -116,7 +116,7 @@ if ($action == "overview"){
        	fwrite($file_handle, date("d.m.Y H:i:s", time()).": MoveUploadedFile(".$_FILES[$name]['name'].")\r\n");
         var_dump($_REQUEST);
         echo json_encode($_REQUEST);
-        die();
+        die('----haha'.$uploadfile);
         if (move_uploaded_file($_FILES[$name]['tmp_name'], $uploadfile)) {
 
 
