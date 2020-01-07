@@ -104,6 +104,8 @@ if ($action == "overview"){
         }
         // $uploaddir = './uploads/';
         $uploadfile = $uploaddir . basename($_FILES[$name]['name']);
+        var_dump($uploadfile);
+        die();
        	fwrite($file_handle, date("d.m.Y H:i:s", time()).": MoveUploadedFile(".$_FILES[$name]['name'].")\r\n");
         if (move_uploaded_file($_FILES[$name]['tmp_name'], $uploadfile)) {
           $uploads[$name]["status"] = $_FILES[$name]['name']." saved successfull";
