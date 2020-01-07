@@ -111,17 +111,16 @@ if ($action == "overview"){
           $uploaddir = './foto/rumah/';
         }
 
-        var_dump($_REQUEST);
-        echo json_encode($_REQUEST);
-        die();
-        
         // $uploaddir = './uploads/';
         $uploadfile = $uploaddir . basename($_FILES[$name]['name']);
-        var_dump($uploadfile);
-        die();
        	fwrite($file_handle, date("d.m.Y H:i:s", time()).": MoveUploadedFile(".$_FILES[$name]['name'].")\r\n");
 
         if (move_uploaded_file($_FILES[$name]['tmp_name'], $uploadfile)) {
+
+          var_dump($_REQUEST);
+          echo json_encode($_REQUEST);
+          die();
+          
           $uploads[$name]["status"] = $_FILES[$name]['name']." saved successfull";
         	fwrite($file_handle, date("d.m.Y H:i:s", time()).": ->moving ".$_FILES[$name]['name']." successfull\r\n");
           $file_name =$name.".".$extensi;
