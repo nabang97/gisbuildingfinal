@@ -98,17 +98,17 @@ if ($action == "overview"){
 
       if($name==$filename){
         if ($buildingtype == "Worship") {
-          $uploaddir = './foto/b_ibadah/';
+          $uploaddir = '../foto/b_ibadah/';
         }elseif ($buildingtype == "Office") {
-          $uploaddir = './foto/kantor/';
+          $uploaddir = '../foto/kantor/';
         }elseif ($buildingtype == "Health") {
-          $uploaddir = './foto/b-kesehatan/';
+          $uploaddir = '../foto/b-kesehatan/';
         }elseif ($buildingtype == "Educational") {
-          $uploaddir = './foto/b-pendidikan/';
+          $uploaddir = '../foto/b-pendidikan/';
         }elseif ($buildingtype == "Msme") {
-          $uploaddir = './foto/umkm/';
+          $uploaddir = '../foto/umkm/';
         }elseif ($buildingtype == "House") {
-          $uploaddir = './foto/rumah/';
+          $uploaddir = '../foto/rumah/';
         }
 
         // $uploaddir = './uploads/';
