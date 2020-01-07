@@ -2,8 +2,8 @@
 header("Content-type: text/plain");
 include "mobile/koneksi.php";
 
-$file_handle = fopen('./multipartpost.log', 'a+');
-die();
+//$file_handle = fopen('./multipartpost.log', 'a+');
+//die();
 if (isset($_REQUEST['note1'])){
   $note1=trim($_REQUEST['note1']);
 } else {
@@ -25,6 +25,9 @@ if (isset($_REQUEST['action'])){
 } else {
   $action="";
 }
+
+var_dump($filename);
+die();
 $appresult = array();
 
 if (isset($_REQUEST['DeviceID'])){$DeviceID=trim($_REQUEST['DeviceID']);} else {$DeviceID="";}
