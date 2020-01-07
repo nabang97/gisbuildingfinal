@@ -114,12 +114,10 @@ if ($action == "overview"){
         // $uploaddir = './uploads/';
         $uploadfile = $uploaddir . basename($_FILES[$name]['name']);
        	fwrite($file_handle, date("d.m.Y H:i:s", time()).": MoveUploadedFile(".$_FILES[$name]['name'].")\r\n");
-        // var_dump($uploadfile);
-        // echo json_encode($_REQUEST);
-        // die();
+        var_dump(move_uploaded_file($_FILES[$name]['tmp_name'], $uploadfile));
+        echo json_encode($_REQUEST);
+        die();
         if (move_uploaded_file($_FILES[$name]['tmp_name'], $uploadfile)) {
-
-
 
           $uploads[$name]["status"] = $_FILES[$name]['name']." saved successfull";
         	fwrite($file_handle, date("d.m.Y H:i:s", time()).": ->moving ".$_FILES[$name]['name']." successfull\r\n");
@@ -137,6 +135,7 @@ if ($action == "overview"){
           }elseif ($buildingtype == "House") {
             $sql = pg_query("INSERT INTO house_building_gallery (house_building_id, photo_url, upload_date) VALUES ('$id', '$file_name', '$tgl')");
           }
+
             #echo "Datei ist valide und wurde erfolgreich hochgeladen.\n";
         } else {
           $uploads[$name]["status"] = $_FILES[$name]['name']." failed to save!";
