@@ -488,7 +488,7 @@ function callRoute(start, end, color, endmarker, img_url) {
     directionsService.route({
         origin: start,
         destination: end,
-        travelMode: google.maps.TravelMode.DRIVING
+        travelMode: google.maps.TravelMode.WALKING
       },
       function (response, status) {
         if (status === google.maps.DirectionsStatus.OK) {
