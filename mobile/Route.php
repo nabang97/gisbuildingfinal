@@ -64,14 +64,11 @@ if (isset($_GET["lat"]) && $_GET["lng"] && $_GET["latd"] && $_GET["lngd"] && $_G
 
           currentlocation = {lat: latposition, lng: lngposition};
           centerLokasi = {lat: latd, lng: lngd};
+
           loadMap(latposition,lngposition);
+
           map.controls[google.maps.ControlPosition.TOP_LEFT].clear();
-          // map.controls[google.maps.ControlPosition.TOP_LEFT].removeAt(2);
-          // map.controls[google.maps.ControlPosition.TOP_LEFT].removeAt(3);
-          // map.controls[google.maps.ControlPosition.TOP_LEFT].removeAt(4);
-          // map.controls[google.maps.ControlPosition.TOP_LEFT].removeAt(5);
-          // map.controls[google.maps.ControlPosition.TOP_LEFT].removeAt(6);
-          // map.controls[google.maps.ControlPosition.TOP_LEFT].removeAt(7);
+          
           var centerControlDiv2 = document.createElement('div');
           var legenda = document.createElement('div');
           var myLayerDiv = document.createElement('div');
@@ -106,7 +103,14 @@ if (isset($_GET["lat"]) && $_GET["lng"] && $_GET["latd"] && $_GET["lngd"] && $_G
               icon:{ url: ""+server+"/img/"+photo+"" },
               map: map
             });
-         callRoute(currentlocation, centerLokasi,'lightblue',markerku);
+         callRoute(currentlocation, centerLokasi,'lightblue',markerku,'DRIVING');
+
+         var controlTravel = document.getElementById('selectTravelMode');
+         controlTravel.addEventListener('change', function() {
+           var selectedValue = controlTravel.options[selectBox.selectedIndex].value;
+           directionsDisplay.setMap(null);
+           callRoute(currentlocation, centerLokasi,'lightblue',markerku,selectedValue);
+         });
 
          google.maps.event.addListener(markerposition, 'dragstart', function() {
            updateMarkerAddress('Dragging...');
@@ -129,7 +133,8 @@ if (isset($_GET["lat"]) && $_GET["lng"] && $_GET["latd"] && $_GET["lngd"] && $_G
            var lngnow = markerposition.getPosition().lng().toString();
            var currentlocation = {lat: latnow, lng: lngnow};
            directionsDisplay.setMap(null);
-           callRoute(markerposition.getPosition(), centerLokasi,'lightblue',markerku);
+            var selectedValue = controlTravel.options[selectBox.selectedIndex].value;
+           callRoute(markerposition.getPosition(), centerLokasi,'lightblue',markerku,selectedValue);
 
            console.log(latnow+"|"+lngnow);
            B4A.CallSub('Marker_DragEnd', true, latnow, lngnow);

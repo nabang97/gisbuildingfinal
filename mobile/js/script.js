@@ -262,18 +262,18 @@ function MyTravelModeControl(controlDiv, map){
   controlUI.style.fontSize='13px';
   controlUI.style.textAlign = 'center';
 
-  controlUI.appendChild(createOption('Driving','driving'));
-  controlUI.appendChild(createOption('Walking','walking'));
-  controlUI.appendChild(createOption('Satellite','satellite'));
-  controlUI.appendChild(createOption('Terrain', 'terrain'));
+  controlUI.appendChild(createOption('Driving','DRIVING'));
+  controlUI.appendChild(createOption('Walking','WALKING'));
+  controlUI.appendChild(createOption('Transit','TRANSIT'));
+  controlUI.appendChild(createOption('Bicycling', 'BICYCLING'));
 
   controlDiv.appendChild(controlUI);
-  controlUI.addEventListener('change', function() {
-    var selectBox = document.getElementById("selectTravelMode");
-    var selectedValue = selectBox.options[selectBox.selectedIndex].value;
-    map.setMapTypeId(selectedValue);
-    console.log(selectedValue);
-  });
+  // controlUI.addEventListener('change', function() {
+  //   var selectBox = document.getElementById("selectTravelMode");
+  //   var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+  //   map.setMapTypeId(selectedValue);
+  //   console.log(selectedValue);
+  // });
 }
 
 
@@ -494,7 +494,7 @@ function clearMarker(){
   markers = [];
 }
 
-function callRoute(start, end, color, endmarker, img_url) {
+function callRoute(start, end, color, endmarker, img_url, mode) {
   var rendererOptions = {
     suppressMarkers : false,
     markerOptions:{ //ganti icon marker destination
@@ -519,7 +519,7 @@ function callRoute(start, end, color, endmarker, img_url) {
     directionsService.route({
         origin: start,
         destination: end,
-        travelMode: google.maps.TravelMode.WALKING
+        travelMode: mode
       },
       function (response, status) {
         if (status === google.maps.DirectionsStatus.OK) {
