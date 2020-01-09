@@ -363,7 +363,7 @@ function MyDragMarker(dragDiv,map){
   controlMarker.style.cursor = 'pointer';
   controlMarker.style.marginLeft = '10px';
   controlMarker.style.marginTop='10px';
-  controlMarker.style.marginRight='0';
+  controlMarker.style.marginRight='10px';
   controlMarker.style.padding = '5px';
   controlMarker.style.height='auto';
   controlMarker.style.color='black';
@@ -390,7 +390,7 @@ function MyPositionControl(positionDiv,map){
   controlPosition.style.cursor = 'pointer';
   controlPosition.style.marginLeft = '10px';
   controlPosition.style.marginTop='10px';
-  controlPosition.style.marginRight='0';
+  controlPosition.style.marginRight='10px';
   controlPosition.style.padding = '5px';
   controlPosition.style.height='auto';
   controlPosition.style.color='black';
@@ -419,7 +419,7 @@ function MyLayerControl(layerDiv,map){
   controlLayer.style.cursor = 'pointer';
   controlLayer.style.marginLeft = '10px';
   controlLayer.style.marginTop='10px';
-  controlLayer.style.marginRight='0';
+  controlLayer.style.marginRight='10px';
   controlLayer.style.padding = '5px';
   controlLayer.style.height='auto';
   controlLayer.style.color='black';
@@ -453,7 +453,7 @@ function MyButtonLegend(legend,map){
   controlLegend.style.cursor = 'pointer';
   controlLegend.style.marginLeft = '10px';
   controlLegend.style.marginTop='10px';
-  controlLegend.style.marginRight='0';
+  controlLegend.style.marginRight='10px';
   controlLegend.style.padding = '5px';
   controlLegend.style.height='auto';
   controlLegend.style.color='black';
