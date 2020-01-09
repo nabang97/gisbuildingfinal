@@ -65,6 +65,10 @@ if (isset($_GET["lat"]) && $_GET["lng"] && $_GET["latd"] && $_GET["lngd"] && $_G
           currentlocation = {lat: latposition, lng: lngposition};
           centerLokasi = {lat: latd, lng: lngd};
           loadMap(latposition,lngposition);
+          map.controls[google.maps.ControlPosition.TOP_LEFT].removeAt(1);
+          map.controls[google.maps.ControlPosition.TOP_LEFT].removeAt(2);
+          map.controls[google.maps.ControlPosition.TOP_LEFT].removeAt(3);
+          map.controls[google.maps.ControlPosition.TOP_LEFT].removeAt(4);
           var travelDiv = document.createElement('div');
           var travelConstrol= new MyTravelModeControl(travelDiv,map);
           map.controls[google.maps.ControlPosition.TOP_LEFT].push(travelDiv);
