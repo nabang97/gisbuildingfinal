@@ -495,6 +495,7 @@ function clearMarker(){
 }
 
 function callRoute(start, end, color, endmarker, img_url, mode) {
+  console.log(mode);
   var rendererOptions = {
     suppressMarkers : false,
     markerOptions:{ //ganti icon marker destination
