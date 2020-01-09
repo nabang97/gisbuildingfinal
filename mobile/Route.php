@@ -69,6 +69,8 @@ if (isset($_GET["lat"]) && $_GET["lng"] && $_GET["latd"] && $_GET["lngd"] && $_G
           map.controls[google.maps.ControlPosition.TOP_LEFT].removeAt(2);
           map.controls[google.maps.ControlPosition.TOP_LEFT].removeAt(3);
           map.controls[google.maps.ControlPosition.TOP_LEFT].removeAt(4);
+          map.controls[google.maps.ControlPosition.TOP_LEFT].removeAt(5);
+          map.controls[google.maps.ControlPosition.TOP_LEFT].removeAt(6);
           var travelDiv = document.createElement('div');
           var travelConstrol= new MyTravelModeControl(travelDiv,map);
           map.controls[google.maps.ControlPosition.TOP_LEFT].push(travelDiv);
