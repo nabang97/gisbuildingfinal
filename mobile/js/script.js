@@ -246,6 +246,36 @@ function MyMapControl(controlDiv, map){
   });
 }
 
+function MyTravelModeControl(controlDiv, map){
+  var controlUI = document.createElement('select');
+  controlUI.setAttribute("id", "selectTravelMode");
+  controlUI.style.backgroundColor = '#fff';
+  controlUI.style.border = '2px solid #fff';
+  controlUI.style.borderRadius = '3px';
+  controlUI.style.boxShadow = '0 2px 6px rgba(0,0,0,.3)';
+  controlUI.style.cursor = 'pointer';
+  controlUI.style.marginLeft = '10px';
+  controlUI.style.marginTop='10px';
+  controlUI.style.marginRight='0';
+  controlUI.style.padding = '5px';
+  controlUI.style.height='auto';
+  controlUI.style.fontSize='13px';
+  controlUI.style.textAlign = 'center';
+
+  controlUI.appendChild(createOption('Styled Map','mystyle'));
+  controlUI.appendChild(createOption('Map','roadmap'));
+  controlUI.appendChild(createOption('Satellite','satellite'));
+  controlUI.appendChild(createOption('Terrain', 'terrain'));
+
+  controlDiv.appendChild(controlUI);
+  controlUI.addEventListener('change', function() {
+    var selectBox = document.getElementById("selectTravelMode");
+    var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+    map.setMapTypeId(selectedValue);
+    console.log(selectedValue);
+  });
+}
+
 
 function loadMap(lat,lng){
   currentlat = lat;
@@ -275,6 +305,7 @@ function loadMap(lat,lng){
   var refreshDiv = document.createElement('div');
   var dragDiv = document.createElement('div');
   var positionDiv = document.createElement('div');
+
   var centerControl = new CenterControl(centerControlDiv, map);
   var newControl = new MyMapControl(centerControlDiv2, map);
   var btnPosition= new MyPositionControl(positionDiv,map);

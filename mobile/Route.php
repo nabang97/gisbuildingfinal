@@ -65,6 +65,9 @@ if (isset($_GET["lat"]) && $_GET["lng"] && $_GET["latd"] && $_GET["lngd"] && $_G
           currentlocation = {lat: latposition, lng: lngposition};
           centerLokasi = {lat: latd, lng: lngd};
           loadMap(latposition,lngposition);
+          var travelDiv = document.createElement('div');
+          var travelConstrol= new MyTravelModeControl(travelDiv,map);          
+          map.controls[google.maps.ControlPosition.BOTTOM_LEFT].push(travelDiv);
           setLayerAll();
           markerposition.setMap(null);
           setMarkerPosition(latposition,lngposition,'Current Position');
