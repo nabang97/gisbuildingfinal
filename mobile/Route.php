@@ -65,12 +65,7 @@ if (isset($_GET["lat"]) && $_GET["lng"] && $_GET["latd"] && $_GET["lngd"] && $_G
           currentlocation = {lat: latposition, lng: lngposition};
           centerLokasi = {lat: latd, lng: lngd};
           loadMap(latposition,lngposition);
-          map.controls[google.maps.ControlPosition.TOP_LEFT].removeAt(1);
-          map.controls[google.maps.ControlPosition.TOP_LEFT].removeAt(2);
-          map.controls[google.maps.ControlPosition.TOP_LEFT].removeAt(3);
-          map.controls[google.maps.ControlPosition.TOP_LEFT].removeAt(4);
-          map.controls[google.maps.ControlPosition.TOP_LEFT].removeAt(5);
-          map.controls[google.maps.ControlPosition.TOP_LEFT].removeAt(6);
+          map.controls[google.maps.ControlPosition.TOP_LEFT].clear();
 
           // var legenda = document.createElement('div');
           // var myLayerDiv = document.createElement('div');
