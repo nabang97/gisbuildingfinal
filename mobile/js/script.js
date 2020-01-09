@@ -337,7 +337,7 @@ function MyButtonRefresh(refreshDiv,map){
   controlRefresh.style.cursor = 'pointer';
   controlRefresh.style.marginLeft = '10px';
   controlRefresh.style.marginTop='10px';
-  controlRefresh.style.marginRight='0';
+  controlRefresh.style.marginRight='10px';
   controlRefresh.style.padding = '5px';
   controlRefresh.style.height='auto';
   controlRefresh.style.color='black';

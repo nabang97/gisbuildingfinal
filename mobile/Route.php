@@ -72,7 +72,9 @@ if (isset($_GET["lat"]) && $_GET["lng"] && $_GET["latd"] && $_GET["lngd"] && $_G
           // map.controls[google.maps.ControlPosition.TOP_LEFT].removeAt(5);
           // map.controls[google.maps.ControlPosition.TOP_LEFT].removeAt(6);
           // map.controls[google.maps.ControlPosition.TOP_LEFT].removeAt(7);
-
+          var centerControlDiv = document.createElement('div');
+          centerControlDiv.style.marginRight='50px';
+          var centerControlDiv2 = document.createElement('div');
           var legenda = document.createElement('div');
           var myLayerDiv = document.createElement('div');
           var refreshDiv = document.createElement('div');
@@ -80,6 +82,7 @@ if (isset($_GET["lat"]) && $_GET["lng"] && $_GET["latd"] && $_GET["lngd"] && $_G
           var positionDiv = document.createElement('div');
           var travelDiv = document.createElement('div');
 
+          var centerControl = new CenterControl(centerControlDiv, map);
           var btnPosition= new MyPositionControl(positionDiv,map);
           var btnDrag= new MyDragMarker(dragDiv,map);
           var btnLegend = new MyButtonLegend(legenda,map);
@@ -88,6 +91,7 @@ if (isset($_GET["lat"]) && $_GET["lng"] && $_GET["latd"] && $_GET["lngd"] && $_G
           var travelConstrol= new MyTravelModeControl(travelDiv,map);
           //
           MyLegend();
+          map.controls[google.maps.ControlPosition.TOP_LEFT].push(centerControlDiv2);
           map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(positionDiv);
           map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(dragDiv);
           map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(legenda);
