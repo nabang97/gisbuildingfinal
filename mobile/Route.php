@@ -35,6 +35,7 @@ if (isset($_GET["lat"]) && $_GET["lng"] && $_GET["latd"] && $_GET["lngd"] && $_G
       var lngd = <?php echo $lngd ?>;
       var currentlocation;
       var centerLokasi;
+      var markerku;
       var building ="<?php echo $building ?>";
       function initMap() {
 
@@ -98,21 +99,12 @@ if (isset($_GET["lat"]) && $_GET["lng"] && $_GET["latd"] && $_GET["lngd"] && $_G
           markerposition.setMap(null);
           setMarkerPosition(latposition,lngposition,'Current Position');
 
-         var markerku = new google.maps.Marker({
+         markerku = new google.maps.Marker({
              position: centerLokasi,
               icon:{ url: ""+server+"/img/"+photo+"" },
               map: map
             });
          callRoute(currentlocation, centerLokasi,'lightblue',markerku,'DRIVING');
-
-         var controlTravel = document.getElementById('selectTravelMode');
-
-         $('#selectTravelMode').change(function(){
-           var selectedValue = controlTravel.options[selectBox.selectedIndex].value;
-           directionsDisplay.setMap(null);
-           callRoute(currentlocation, centerLokasi,'lightblue',markerku,selectedValue);
-         });
-
 
          google.maps.event.addListener(markerposition, 'dragstart', function() {
            updateMarkerAddress('Dragging...');

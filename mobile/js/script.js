@@ -247,33 +247,34 @@ function MyMapControl(controlDiv, map){
 }
 
 function MyTravelModeControl(controlDiv, map){
-  var controlUI = document.createElement('select');
-  controlUI.setAttribute("id", "selectTravelMode");
-  controlUI.style.backgroundColor = '#fff';
-  controlUI.style.border = '2px solid #fff';
-  controlUI.style.borderRadius = '3px';
-  controlUI.style.boxShadow = '0 2px 6px rgba(0,0,0,.3)';
-  controlUI.style.cursor = 'pointer';
-  controlUI.style.marginLeft = '10px';
-  controlUI.style.marginTop='10px';
-  controlUI.style.marginRight='0';
-  controlUI.style.padding = '5px';
-  controlUI.style.height='auto';
-  controlUI.style.fontSize='13px';
-  controlUI.style.textAlign = 'center';
+  var controlTravel = document.createElement('select');
+  controlTravel.setAttribute("id", "selectTravelMode");
+  controlTravel.style.backgroundColor = '#fff';
+  controlTravel.style.border = '2px solid #fff';
+  controlTravel.style.borderRadius = '3px';
+  controlTravel.style.boxShadow = '0 2px 6px rgba(0,0,0,.3)';
+  controlTravel.style.cursor = 'pointer';
+  controlTravel.style.marginLeft = '10px';
+  controlTravel.style.marginTop='10px';
+  controlTravel.style.marginRight='0';
+  controlTravel.style.padding = '5px';
+  controlTravel.style.height='auto';
+  controlTravel.style.fontSize='13px';
+  controlTravel.style.textAlign = 'center';
 
-  controlUI.appendChild(createOption('Driving','DRIVING'));
-  controlUI.appendChild(createOption('Walking','WALKING'));
-  controlUI.appendChild(createOption('Transit','TRANSIT'));
-  controlUI.appendChild(createOption('Bicycling', 'BICYCLING'));
+  controlTravel.appendChild(createOption('Driving','DRIVING'));
+  controlTravel.appendChild(createOption('Walking','WALKING'));
+  controlTravel.appendChild(createOption('Transit','TRANSIT'));
+  controlTravel.appendChild(createOption('Bicycling','BICYCLING'));
 
-  controlDiv.appendChild(controlUI);
-  // controlUI.addEventListener('change', function() {
-  //   var selectBox = document.getElementById("selectTravelMode");
-  //   var selectedValue = selectBox.options[selectBox.selectedIndex].value;
-  //   map.setMapTypeId(selectedValue);
-  //   console.log(selectedValue);
-  // });
+  controlDiv.appendChild(controlTravel);
+  controlTravel.addEventListener('change', function() {
+      var selectBox = document.getElementById("selectTravelMode");
+      var selectedValue = controlTravel.options[selectBox.selectedIndex].value;
+      console.log(selectedValue);
+      directionsDisplay.setMap(null);
+      callRoute(currentlocation, centerLokasi,'lightblue',markerku,selectedValue);
+  });
 }
 
 
@@ -516,7 +517,7 @@ function callRoute(start, end, color, endmarker, mode) {
   }
     directionsService = new google.maps.DirectionsService;
     directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);
-  
+
     directionsService.route({
         origin: start,
         destination: end,
