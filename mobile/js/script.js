@@ -542,7 +542,7 @@ function callRoute(start, end, color, endmarker, mode) {
               });
           endmarker.info.open(map, endmarker);
         } else {
-          window.alert('Directions request failed due to ' + status);
+          B4A.CallSub('RouteMessage', true, 'Direction request returned no results.');
         }
       }
     );
