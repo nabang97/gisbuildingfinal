@@ -97,7 +97,7 @@ if (isset($_GET["lat"]) && $_GET["lng"] && $_GET["latd"] && $_GET["lngd"] && $_G
           map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(legenda);
           map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(myLayerDiv);
           map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(refreshDiv);
-          map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(travelDiv);
+          map.controls[google.maps.ControlPosition.TOP_LEFT].push(travelDiv);
 
           setLayerAll();
           markerposition.setMap(null);
