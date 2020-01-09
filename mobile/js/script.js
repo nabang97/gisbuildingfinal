@@ -316,10 +316,10 @@ function loadMap(lat,lng){
 
   MyLegend();
   map.controls[google.maps.ControlPosition.TOP_LEFT].push(centerControlDiv2);
-  map.controls[google.maps.ControlPosition.LEFT_TOP].push(positionDiv);
-  map.controls[google.maps.ControlPosition.LEFT_TOP].push(dragDiv);
-  map.controls[google.maps.ControlPosition.LEFT_TOP].push(legenda);
-  map.controls[google.maps.ControlPosition.LEFT_TOP].push(myLayerDiv);
+  map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(positionDiv);
+  map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(dragDiv);
+  map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(legenda);
+  map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(myLayerDiv);
   map.controls[google.maps.ControlPosition.TOP_LEFT].push(refreshDiv);
 
 
