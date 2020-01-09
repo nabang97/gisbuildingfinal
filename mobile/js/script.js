@@ -262,8 +262,8 @@ function MyTravelModeControl(controlDiv, map){
   controlUI.style.fontSize='13px';
   controlUI.style.textAlign = 'center';
 
-  controlUI.appendChild(createOption('Styled Map','mystyle'));
-  controlUI.appendChild(createOption('Map','roadmap'));
+  controlUI.appendChild(createOption('Driving','driving'));
+  controlUI.appendChild(createOption('Walking','walking'));
   controlUI.appendChild(createOption('Satellite','satellite'));
   controlUI.appendChild(createOption('Terrain', 'terrain'));
 
