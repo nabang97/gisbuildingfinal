@@ -520,7 +520,7 @@ function callRoute(start, end, color, endmarker, img_url, mode) {
     directionsService.route({
         origin: start,
         destination: end,
-        travelMode: mode
+        travelMode:  ''+mode+''
       },
       function (response, status) {
         if (status === google.maps.DirectionsStatus.OK) {
