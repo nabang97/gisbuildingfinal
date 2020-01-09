@@ -83,6 +83,7 @@ if (isset($_GET["lat"]) && $_GET["lng"] && $_GET["latd"] && $_GET["lngd"] && $_G
           var travelDiv = document.createElement('div');
 
           var centerControl = new CenterControl(centerControlDiv, map);
+          var newControl = new MyMapControl(centerControlDiv2, map);
           var btnPosition= new MyPositionControl(positionDiv,map);
           var btnDrag= new MyDragMarker(dragDiv,map);
           var btnLegend = new MyButtonLegend(legenda,map);
