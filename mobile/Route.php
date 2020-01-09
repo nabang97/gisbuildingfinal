@@ -72,28 +72,28 @@ if (isset($_GET["lat"]) && $_GET["lng"] && $_GET["latd"] && $_GET["lngd"] && $_G
           map.controls[google.maps.ControlPosition.TOP_LEFT].removeAt(5);
           map.controls[google.maps.ControlPosition.TOP_LEFT].removeAt(6);
 
-          var legenda = document.createElement('div');
-          var myLayerDiv = document.createElement('div');
-          var refreshDiv = document.createElement('div');
-          var dragDiv = document.createElement('div');
-          var positionDiv = document.createElement('div');
-          var travelDiv = document.createElement('div');
+          // var legenda = document.createElement('div');
+          // var myLayerDiv = document.createElement('div');
+          // var refreshDiv = document.createElement('div');
+          // var dragDiv = document.createElement('div');
+          // var positionDiv = document.createElement('div');
+          // var travelDiv = document.createElement('div');
+          //
+          // var btnPosition= new MyPositionControl(positionDiv,map);
+          // var btnDrag= new MyDragMarker(dragDiv,map);
+          // var btnLegend = new MyButtonLegend(legenda,map);
+          // var btnLayer= new MyLayerControl(myLayerDiv,map);
+          // var btnRefresh= new MyButtonRefresh(refreshDiv,map);
+          // var travelConstrol= new MyTravelModeControl(travelDiv,map);
+          //
+          // MyLegend();
+          // map.controls[google.maps.ControlPosition.TOP_LEFT].push(positionDiv);
+          // map.controls[google.maps.ControlPosition.TOP_LEFT].push(dragDiv);
+          // map.controls[google.maps.ControlPosition.TOP_LEFT].push(legenda);
+          // map.controls[google.maps.ControlPosition.TOP_LEFT].push(myLayerDiv);
+          // map.controls[google.maps.ControlPosition.TOP_LEFT].push(refreshDiv);
+          // map.controls[google.maps.ControlPosition.TOP_LEFT].push(travelDiv);
 
-          var btnPosition= new MyPositionControl(positionDiv,map);
-          var btnDrag= new MyDragMarker(dragDiv,map);
-          var btnLegend = new MyButtonLegend(legenda,map);
-          var btnLayer= new MyLayerControl(myLayerDiv,map);
-          var btnRefresh= new MyButtonRefresh(refreshDiv,map);
-          var travelConstrol= new MyTravelModeControl(travelDiv,map);
-
-          MyLegend();
-          map.controls[google.maps.ControlPosition.TOP_LEFT].push(positionDiv);
-          map.controls[google.maps.ControlPosition.TOP_LEFT].push(dragDiv);
-          map.controls[google.maps.ControlPosition.TOP_LEFT].push(legenda);
-          map.controls[google.maps.ControlPosition.TOP_LEFT].push(myLayerDiv);
-          map.controls[google.maps.ControlPosition.TOP_LEFT].push(refreshDiv);
-          map.controls[google.maps.ControlPosition.TOP_LEFT].push(travelDiv);
-          
           setLayerAll();
           markerposition.setMap(null);
           setMarkerPosition(latposition,lngposition,'Current Position');
