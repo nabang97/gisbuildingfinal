@@ -72,8 +72,6 @@ if (isset($_GET["lat"]) && $_GET["lng"] && $_GET["latd"] && $_GET["lngd"] && $_G
           // map.controls[google.maps.ControlPosition.TOP_LEFT].removeAt(5);
           // map.controls[google.maps.ControlPosition.TOP_LEFT].removeAt(6);
           // map.controls[google.maps.ControlPosition.TOP_LEFT].removeAt(7);
-          var centerControlDiv = document.createElement('div');
-          centerControlDiv.style.marginRight='50px';
           var centerControlDiv2 = document.createElement('div');
           var legenda = document.createElement('div');
           var myLayerDiv = document.createElement('div');
@@ -82,7 +80,6 @@ if (isset($_GET["lat"]) && $_GET["lng"] && $_GET["latd"] && $_GET["lngd"] && $_G
           var positionDiv = document.createElement('div');
           var travelDiv = document.createElement('div');
 
-          var centerControl = new CenterControl(centerControlDiv, map);
           var newControl = new MyMapControl(centerControlDiv2, map);
           var btnPosition= new MyPositionControl(positionDiv,map);
           var btnDrag= new MyDragMarker(dragDiv,map);
