@@ -10,7 +10,7 @@ if (isset($_GET["lat"]) && $_GET["lng"] && $_GET["latd"] && $_GET["lngd"] && $_G
   $lng ="null";
   $latd ="null";    // Isi yang dicari
   $lngd ="null";
-    $building = "null";
+  $building = "null";
 }
  ?>
 <!DOCTYPE html>
@@ -68,7 +68,7 @@ if (isset($_GET["lat"]) && $_GET["lng"] && $_GET["latd"] && $_GET["lngd"] && $_G
           loadMap(latposition,lngposition);
 
           map.controls[google.maps.ControlPosition.TOP_LEFT].clear();
-          
+
           var centerControlDiv2 = document.createElement('div');
           var legenda = document.createElement('div');
           var myLayerDiv = document.createElement('div');
@@ -106,11 +106,13 @@ if (isset($_GET["lat"]) && $_GET["lng"] && $_GET["latd"] && $_GET["lngd"] && $_G
          callRoute(currentlocation, centerLokasi,'lightblue',markerku,'DRIVING');
 
          var controlTravel = document.getElementById('selectTravelMode');
-         controlTravel.addEventListener('change', function() {
+
+         $('#selectTravelMode').change(function(){
            var selectedValue = controlTravel.options[selectBox.selectedIndex].value;
            directionsDisplay.setMap(null);
            callRoute(currentlocation, centerLokasi,'lightblue',markerku,selectedValue);
          });
+
 
          google.maps.event.addListener(markerposition, 'dragstart', function() {
            updateMarkerAddress('Dragging...');

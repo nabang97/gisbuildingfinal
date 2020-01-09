@@ -494,7 +494,7 @@ function clearMarker(){
   markers = [];
 }
 
-function callRoute(start, end, color, endmarker, img_url, mode) {
+function callRoute(start, end, color, endmarker, mode) {
   console.log(mode);
   var rendererOptions = {
     suppressMarkers : false,
@@ -516,30 +516,11 @@ function callRoute(start, end, color, endmarker, img_url, mode) {
   }
     directionsService = new google.maps.DirectionsService;
     directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);
-    var travelmodes;
-    switch (mode) {
-      case 'DRIVING':
-        travelmodes = google.maps.TravelMode.DRIVING;
-        break;
-      case 'BICYCLING':
-      travelmodes = google.maps.TravelMode.BICYCLING;
-
-        break;
-      case 'TRANSIT':
-      travelmodes= google.maps.TravelMode.TRANSIT;
-
-        break;
-      case 'WALKING':
-      travelmodes= google.maps.TravelMode.WALKING;
-
-        break;
-      default:
-
-    }
+  
     directionsService.route({
         origin: start,
         destination: end,
-        travelMode:  travelmodes
+        travelMode: mode
       },
       function (response, status) {
         if (status === google.maps.DirectionsStatus.OK) {
