@@ -113,8 +113,10 @@ if ($action == "overview"){
           $uploaddir = '/foto/rumah/';
         }
 
+
         // $uploaddir = './uploads/';
         $uploadfile = SITE_ROOT.$uploaddir.basename($_FILES[$name]['name']);
+        
        	fwrite($file_handle, date("d.m.Y H:i:s", time()).": MoveUploadedFile(".$_FILES[$name]['name'].")\r\n");
         // var_dump(move_uploaded_file($_FILES[$name]['tmp_name'], $uploadfile));
         // echo json_encode($_REQUEST);

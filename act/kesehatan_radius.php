@@ -7,8 +7,7 @@ $rad = $_GET["rad"];
 $querysearch = "SELECT health_building_id, name_of_health_building ,ST_X(ST_CENTROID(geom)) AS lon, ST_Y(ST_CENTROID(geom)) AS lat,
 				ST_DISTANCE_SPHERE(ST_GeomFromText('POINT(" . $longi . " " . $latit . ")',-1), geom) AS jarak
 				FROM health_building WHERE ST_DISTANCE_SPHERE(ST_GeomFromText('POINT(" . $longi . " " . $latit . ")',-1),
-				geom) <= " . $rad . " ORDER BY jarak
-				";
+				geom) <= " . $rad . " ORDER BY jarak";
 
 $hasil = pg_query($querysearch);
 while ($row = pg_fetch_array($hasil)) {
