@@ -3,19 +3,13 @@
   <head>
     <?php include('resources/head.php'); ?>
     <?php
-    if (isset($_GET["lat"]) && $_GET["lng"] && $_GET["latd"] && $_GET["lngd"] && $_GET["building"]) {
-      $lat = $_GET["lat"];    // Isi yang dicari
-      $lng = $_GET["lng"];
-      $latd = $_GET["latd"];    // Isi yang dicari
-      $lngd = $_GET["lngd"];
-      $building = $_GET['building'];
-    }else{
-      $lat ="null";    // Isi yang dicari
-      $lng ="null";
-      $latd ="null";    // Isi yang dicari
-      $lngd ="null";
-      $building = "null";
-    }
+
+      $lat = $_GET["lat"]; if (empty($_GET["lat"])) {$lat="null";}   // Isi yang dicari
+      $lng = $_GET["lng"]; if (empty($_GET["lng"])) { $lng="null";}
+      $latd = $_GET["latd"];  if (empty($_GET["latd"])) {$latd="null";}  // Isi yang dicari
+      $lngd = $_GET["lngd"]; if (empty($_GET["lngd"])) { $lngd="null";}
+      $building = $_GET["building"]; if (empty($_GET["building"])) {$building="null";}
+      $mode=$_GET["mode"]; if (empty($_GET["mode"])) {$mode='DRIVING';}
      ?>
 
     <style media="screen">
@@ -54,10 +48,10 @@
     var lngposition = <?php echo $lng ?>;
     var latd = <?php echo $latd ?>;
     var lngd = <?php echo $lngd ?>;
-    var building = <?php echo $building ?>;
+    var building ="<?php echo $building ?>";
     var currentlocation;
     var centerLokasi;
-
+    var travelModeName='<?php echo $mode ?>';
     function initMap() {
       //loadMap(latposition,lngposition);
 
@@ -83,14 +77,16 @@
         default:  photo = "sekolah.png";
 
       }
+
       currentlocation = {lat: latposition, lng: lngposition};
       centerLokasi = {lat: latd, lng: lngd};
+      var travelDiv = document.createElement('div');
       var markerku = new google.maps.Marker({
           position: centerLokasi,
            icon:{ url: ""+server+"/img/"+photo+"" },
            map: map
          });
-      callRouteNavigation(currentlocation, centerLokasi,""+server+"/img/"+photo+"");
+      callRouteNavigation(currentlocation, centerLokasi,""+server+"/img/"+photo+"", travelModeName);
       console.log("yaa");
 
     }

@@ -127,7 +127,7 @@ if (isset($_GET["lat"]) && $_GET["lng"] && $_GET["latd"] && $_GET["lngd"] && $_G
            var lngnow = markerposition.getPosition().lng().toString();
            var currentlocation = {lat: latnow, lng: lngnow};
            directionsDisplay.setMap(null);
-            var selectedValue = controlTravel.options[selectBox.selectedIndex].value;
+           var selectedValue = controlTravel.options[selectBox.selectedIndex].value;
            callRoute(markerposition.getPosition(), centerLokasi,'lightblue',markerku,selectedValue);
 
            console.log(latnow+"|"+lngnow);

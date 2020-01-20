@@ -274,6 +274,7 @@ function MyTravelModeControl(controlDiv, map){
       console.log(selectedValue);
       directionsDisplay.setMap(null);
       callRoute(currentlocation, centerLokasi,'lightblue',markerku,selectedValue);
+       B4A.CallSub('ChangeTravelMode_Listener', true, selectedValue);
   });
 }
 
@@ -550,7 +551,7 @@ function callRoute(start, end, color, endmarker, mode) {
         map.setZoom(16);
 }
 
-function callRouteNavigation(start, end, img_url) {
+function callRouteNavigation(start, end, img_url, mode) {
   $('#directionsPanel').empty();
   var rendererOptions = {
     suppressMarkers : true
@@ -561,7 +562,7 @@ function callRouteNavigation(start, end, img_url) {
     directionsService.route({
         origin: start,
         destination: end,
-        travelMode: google.maps.TravelMode.DRIVING
+        travelMode: mode
       },
       function (response, status) {
         if (status === google.maps.DirectionsStatus.OK) {

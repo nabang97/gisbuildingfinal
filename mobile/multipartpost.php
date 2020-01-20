@@ -28,9 +28,6 @@ if (isset($_REQUEST['action'])){
 
 define("SITE_ROOT", dirname(dirname(__FILE__)));
 
-// var_dump($_REQUEST);
-// var_dump($_POST);
-// die();
 $appresult = array();
 
 if (isset($_REQUEST['DeviceID'])){$DeviceID=trim($_REQUEST['DeviceID']);} else {$DeviceID="";}
@@ -113,14 +110,10 @@ if ($action == "overview"){
           $uploaddir = '/foto/rumah/';
         }
 
-
-        // $uploaddir = './uploads/';
         $uploadfile = SITE_ROOT.$uploaddir.basename($_FILES[$name]['name']);
-        
+
        	fwrite($file_handle, date("d.m.Y H:i:s", time()).": MoveUploadedFile(".$_FILES[$name]['name'].")\r\n");
-        // var_dump(move_uploaded_file($_FILES[$name]['tmp_name'], $uploadfile));
-        // echo json_encode($_REQUEST);
-        // die();
+
         if (move_uploaded_file($_FILES[$name]['tmp_name'], $uploadfile)) {
 
           $uploads[$name]["status"] = $_FILES[$name]['name']." saved successfull";
@@ -156,7 +149,7 @@ if ($action == "overview"){
     }
   }
   fwrite($file_handle, "======================================"."\r\n");
-	#print_r($uploads);
+
   $appresult["uploads"] = $uploads;
 
   echo json_encode($appresult);
