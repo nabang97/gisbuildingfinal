@@ -127,7 +127,8 @@ if (isset($_GET["lat"]) && $_GET["lng"] && $_GET["latd"] && $_GET["lngd"] && $_G
            var lngnow = markerposition.getPosition().lng().toString();
            var currentlocation = {lat: latnow, lng: lngnow};
            directionsDisplay.setMap(null);
-           var selectedValue = document.getElementById('selectTravelMode').options[selectBox.selectedIndex].value;
+           var selectBox = document.getElementById("selectTravelMode");
+           var selectedValue = selectBox.options[selectBox.selectedIndex].value;
            console.log(travelControl);
            callRoute(markerposition.getPosition(), centerLokasi,'lightblue',markerku,selectedValue);
 
