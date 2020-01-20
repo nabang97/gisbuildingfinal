@@ -84,7 +84,7 @@ if (isset($_GET["lat"]) && $_GET["lng"] && $_GET["latd"] && $_GET["lngd"] && $_G
           var btnLegend = new MyButtonLegend(legenda,map);
           var btnLayer= new MyLayerControl(myLayerDiv,map);
           var btnRefresh= new MyButtonRefresh(refreshDiv,map);
-          var travelConstrol= new MyTravelModeControl(travelDiv,map);
+          var travelControl= new MyTravelModeControl(travelDiv,map);
           //
           MyLegend();
           map.controls[google.maps.ControlPosition.TOP_LEFT].push(centerControlDiv2);
@@ -127,7 +127,8 @@ if (isset($_GET["lat"]) && $_GET["lng"] && $_GET["latd"] && $_GET["lngd"] && $_G
            var lngnow = markerposition.getPosition().lng().toString();
            var currentlocation = {lat: latnow, lng: lngnow};
            directionsDisplay.setMap(null);
-           var selectedValue = controlTravel.options[selectBox.selectedIndex].value;
+           var selectedValue = document.getElementById('selectTravelMode').options[selectBox.selectedIndex].value;
+           console.log(travelControl);
            callRoute(markerposition.getPosition(), centerLokasi,'lightblue',markerku,selectedValue);
 
            console.log(latnow+"|"+lngnow);
