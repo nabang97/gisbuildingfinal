@@ -275,7 +275,7 @@ function MyTravelModeControl(controlDiv, map){
       var selectedValue = controlTravel.options[selectBox.selectedIndex].value;
       console.log(selectedValue);
       directionsDisplay.setMap(null);
-      callRoute(currentlocation, centerLokasi,'lightblue',markerku,selectedValue);
+
        B4A.CallSub('ChangeTravelMode_Listener', true, selectedValue);
   });
 }

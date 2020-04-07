@@ -15,7 +15,7 @@
     <style media="screen">
     #directionsPanel{
       height: auto;
-      background: white;
+      background: pink;
     }
       table#directionsTable{
         width: 100%;
@@ -30,6 +30,11 @@
        td{
            font-size: 13px;
        }
+       .tessidang{
+         background-color: green;
+         width: 100%;
+         height: 50px;
+       }
 
     </style>
 
@@ -38,6 +43,9 @@
 
   <body>
     <div id="directionsPanel">
+
+    </div>
+    <div class="tessidang">
 
     </div>
 
