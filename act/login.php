@@ -5,7 +5,7 @@
 		$pass = pg_escape_string(md5($_POST['password']));
 		$a=array($user,$pass);
 		//$sql = pg_query_params($conn,'SELECT * FROM user_account where username="?" and password="?"', array('$user','$pass')) or die('Could not connect: ' . pg_last_error());
-		$sql = pg_query("SELECT * FROM user_account where username='$user' and password='$pass'") or die('Could not connect: ' . pg_last_error());
+		$sql = pg_query("SELECT * FROM user_account where username='$user' and password='$pass' LIMIT 1") or die('Could not connect: ' . pg_last_error());
 		$row= pg_fetch_array($sql);
 		if($row!=0){
 			session_start();
