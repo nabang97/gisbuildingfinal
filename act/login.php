@@ -1,8 +1,8 @@
 <?php
 	if (isset($_POST['username'])) {
 		include '../inc/koneksi.php';
-		$user = $_POST['username'];
-		$pass = md5($_POST['password']);
+		$user = mysql_real_escape_string($_POST['username']);
+		$pass = mysql_real_escape_string(md5($_POST['password']));
 		$sql = pg_query("SELECT * FROM user_account where username='$user' and password='$pass'")or die(mysql_error());
 		$row= pg_fetch_array($sql);
 		if($row!=0){
