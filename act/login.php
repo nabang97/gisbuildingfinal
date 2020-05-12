@@ -3,7 +3,7 @@
 		include '../inc/koneksi.php';
 		$user = mysql_real_escape_string($_POST['username']);
 		$pass = mysql_real_escape_string(md5($_POST['password']));
-		$sql = pg_query("SELECT * FROM user_account where username='$user' and password='$pass'")or die(mysql_error());
+		$sql = pg_query("SELECT * FROM user_account where username='$user' and password='$pass'")  or die('Could not connect: ' . pg_last_error());
 		$row= pg_fetch_array($sql);
 		if($row!=0){
 			session_start();
